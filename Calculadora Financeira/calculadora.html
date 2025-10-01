@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="navbar"><button onclick="gotoPage1()">Descobrir Taxa de Postura</button>
+    <button onclick="gotoPage2()">Calculadora de Perdas</button></div>
+    <div id="conteudo">
+        Calculadora de taxa de postura. <br><br>
+        Selecione o periodo da amostra. <br><br>
+        <select name="" id="get_periodo">
+            <option value="1">Dia</option>
+            <option value="2">Mês</option>
+            <option value="3">Ano</option>
+        </select><br><br>
+        Digite a quantidade de ovos coletados no periodo especificado. <br>
+        <input type="text" id="get_ovos"><br><br>
+        Digite o número de aves na sua produção. <br>
+        <input type="text" id="get_ave"><br><br>
+
+        <button onclick="getPostura()">Calcular postura</button><br><br>
+        <div id="mensagem"></div>
+    </div>
+
+
+</body>
+</html>
+
+<script>
+
+    function gotoPage1(){
+        conteudo.innerHTML = `        
+        Calculadora de taxa de postura. <br><br>
+        Selecione o periodo da amostra. <br><br>
+        <select name="" id="get_periodo">
+            <option value="1">Dia</option>
+            <option value="2">Mês</option>
+            <option value="3">Ano</option>
+        </select><br><br>
+        Digite a quantidade de ovos coletados no periodo especificado. <br>
+        <input type="text" id="get_ovos"><br><br>
+        Digite o número de aves na sua produção. <br>
+        <input type="text" id="get_ave"><br><br>
+
+        <button onclick="getPostura()">Calcular postura</button><br><br>
+        <div id="mensagem"></div>`
+    }
+
+    function gotoPage2(){
+        conteudo.innerHTML = `        
+        Calculadora de perdas por estresse climático. <br><br>
+
+        Digite a sua taxa de postura atual. (%)<br>
+        <input type="number" id="get_post"><br><br>
+        Digite o número de aves na sua produção. <br>
+        <input type="number" id="get_ave"><br><br>
+        Digite o preço médio da unidade do ovo. <br>
+        <input type="number" id="get_preco"><br><br>
+
+        <button onclick="getPerda()">Calcular perda</button><br><br>
+        <div id="mensagem"></div>`
+    }
+
+    function getPostura() {
+        var ovos = Number(get_ovos.value);
+        var aves = Number(get_ave.value);
+        var tempo = get_periodo.value;
+
+        var periodos = ['dia', 'mês', 'ano'];
+
+        if (tempo == 1){
+
+            var resultado = ovos / aves / 1 ;
+            var resultadoIdeal = (aves * .93)
+
+        } else if (tempo == 2) {
+
+            var resultado = ovos / aves / 30 ;
+            var resultadoIdeal = (aves * .93) * 30
+
+        } else {
+
+            var resultado = ovos / aves / 365 ;
+            var resultadoIdeal = (aves * .93) * 365.25
+
+        }
+        
+        var diferenca = ((resultadoIdeal - ovos) / resultadoIdeal) * 100;
+
+        if (resultado < .93) {
+
+            mensagem.innerHTML = `Levando em consideração uma produção de ${aves} galinhas, que produzem ${ovos} ovos em 1 ${periodos[tempo - 1]}, a taxa de postura aproximada é de ≈${resultado.toLocaleString('pt-BR', {style: 'percent'})}`;
+
+            mensagem.innerHTML += `<br> Em condições térmicas controladas e postura ideal (≈93%), esta produção pode atingir até ≈${resultadoIdeal.toFixed()} ovos, ou seja, uma diferença de ${diferenca.toFixed(1)}%.`;
+    
+        } else if (resultado < 1.01){
+
+            mensagem.innerHTML = `Suas galinhas estão produzindo em máxima eficiência.`
+
+        } else {
+
+            mensagem.innerHTML = `Entrada inválida: a produção inserida excede o limite fisiológico habitual das aves. `
+
+        }
+
+
+    }
+
+    function getPerda() {
+        var aves = Number(get_ave.value);
+        var taxa = Number(get_post.value)/100;
+        var preco = Number(get_preco.value);
+
+        var producao = aves * taxa * 365;
+        var lucroAtual = producao * preco;
+
+        var ideal = aves * .93 * 365;
+        var lucroIdeal = ideal * preco;
+
+        var dif = lucroIdeal - lucroAtual;
+
+        if (taxa < .93) {
+
+            if (taxa < .75) {
+                mensagem.innerHTML = `Sua produção apresenta uma taxa de postura comparável à <b>situações extremas</b> de estresse climático.</br></br>`;
+            } else if (taxa < .90){
+                mensagem.innerHTML = `Sua produção apresenta uma taxa de postura comparável à <b>situações amenas</b> de estresse climático.</br></br>`;
+            } else {
+                mensagem.innerHTML = `Sua produção apresenta uma taxa de postura comparável à situações ideais de controle de temperatura e umidade.</br></br>`;
+            }
+
+            
+            mensagem.innerHTML += `Nos parâmetros atuais a sua produção gera ${lucroAtual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}/ano. <br>
+            Potencial de retorno em cenário de controle ideal: ${lucroIdeal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}/ano <br><br>
+            <b>Diferença de ganhos devido ao descontrole de umidade e temperatura: ${dif.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</b>`;
+            
+        } else mensagem.innerHTML = `Entrada inválida: a taxa inserida excede o limite fisiológico habitual das aves. `;
+
+    }
+</script>
