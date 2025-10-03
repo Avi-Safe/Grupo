@@ -3,26 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
-    <div id="navbar"><button onclick="gotoPage1()">Descobrir Taxa de Postura</button>
-    <button onclick="gotoPage2()">Calculadora de Perdas</button></div>
-    <div id="conteudo">
-        Calculadora de taxa de postura. <br><br>
-        Selecione o periodo da amostra. <br><br>
-        <select name="" id="get_periodo">
-            <option value="1">Dia</option>
-            <option value="2">Mês</option>
-            <option value="3">Ano</option>
-        </select><br><br>
-        Digite a quantidade de ovos coletados no periodo especificado. <br>
-        <input type="text" id="get_ovos"><br><br>
-        Digite o número de aves na sua produção. <br>
-        <input type="text" id="get_ave"><br><br>
-
-        <button onclick="getPostura()">Calcular postura</button><br><br>
-        <div id="mensagem"></div>
+    <div class="main" id="page">
+        <div class="navbar"><button onclick="gotoPage1()" class="atual"><span>1</span> Descobrir Taxa de Postura</button>
+        <button onclick="gotoPage2()"><span>2</span> Calculadora de Perdas</button></div>
+        <div class="conteudo" id="conteudo">
+            <h1>Calculadora de taxa de postura</h1> 
+            Selecione o periodo da amostra 
+            <select name="" id="get_periodo">
+                <option value="1">Dia</option>
+                <option value="2">Mês</option>
+                <option value="3">Ano</option>
+            </select>
+            <div class="entrada">
+                Digite a quantidade de ovos coletados no periodo especificado <br>
+                <input type="number" id="get_ovos">
+                Digite o número de aves na sua produção <br>
+                <input type="number" id="get_ave">
+            </div>
+        
+            <button onclick="getPostura()">Calcular postura</button>
+            <div class="mes_container"><div id="mensagem"></div></div>
+        </div>
     </div>
 
 
@@ -32,36 +37,47 @@
 <script>
 
     function gotoPage1(){
-        conteudo.innerHTML = `        
-        Calculadora de taxa de postura. <br><br>
-        Selecione o periodo da amostra. <br><br>
-        <select name="" id="get_periodo">
-            <option value="1">Dia</option>
-            <option value="2">Mês</option>
-            <option value="3">Ano</option>
-        </select><br><br>
-        Digite a quantidade de ovos coletados no periodo especificado. <br>
-        <input type="text" id="get_ovos"><br><br>
-        Digite o número de aves na sua produção. <br>
-        <input type="text" id="get_ave"><br><br>
-
-        <button onclick="getPostura()">Calcular postura</button><br><br>
-        <div id="mensagem"></div>`
+        page.innerHTML = `        
+        <div class="navbar"><button onclick="gotoPage1()" class="atual"><span>1</span> Descobrir Taxa de Postura</button>
+        <button onclick="gotoPage2()"><span>2</span> Calculadora de Perdas</button></div>
+        <div class="conteudo" id="conteudo">
+            <h1>Calculadora de taxa de postura</h1> 
+            Selecione o periodo da amostra 
+            <select name="" id="get_periodo">
+                <option value="1">Dia</option>
+                <option value="2">Mês</option>
+                <option value="3">Ano</option>
+            </select>
+            <div class="entrada">
+                Digite a quantidade de ovos coletados no periodo especificado <br>
+                <input type="number" id="get_ovos">
+                Digite o número de aves na sua produção <br>
+                <input type="number" id="get_ave">
+            </div>
+        
+            <button onclick="getPostura()">Calcular postura</button>
+            <div class="mes_container"><div id="mensagem"></div></div>
+        </div>`
     }
 
     function gotoPage2(){
-        conteudo.innerHTML = `        
-        Calculadora de perdas por estresse climático. <br><br>
-
-        Digite a sua taxa de postura atual. (%)<br>
-        <input type="number" id="get_post"><br><br>
-        Digite o número de aves na sua produção. <br>
-        <input type="number" id="get_ave"><br><br>
-        Digite o preço médio da unidade do ovo. <br>
-        <input type="number" id="get_preco"><br><br>
-
-        <button onclick="getPerda()">Calcular perda</button><br><br>
-        <div id="mensagem"></div>`
+        page.innerHTML = `        
+        <div class="navbar"><button onclick="gotoPage1()"><span>1</span> Descobrir Taxa de Postura</button>
+        <button onclick="gotoPage2()" class="atual"><span>2</span> Calculadora de Perdas</button></div>
+        <div class="conteudo" id="conteudo">
+            <h1>Calculadora de perdas por estresse climático</h1> 
+            </select>
+            <div class="entrada">
+                Digite a sua taxa de postura atual (%)<br>
+                <input type="number" id="get_post">
+                Digite o número de aves na sua produção <br>
+                <input type="number" id="get_ave">
+                Digite o preço médio da unidade do ovo <br>
+                <input type="number" id="get_preco">
+            </div>
+            <button onclick="getPerda()">Calcular perda</button>
+            <div class="mes_container"><div id="mensagem"></div></div>
+        </div>`
     }
 
     function getPostura() {
@@ -92,9 +108,9 @@
 
         if (resultado < .93) {
 
-            mensagem.innerHTML = `Levando em consideração uma produção de ${aves} galinhas, que produzem ${ovos} ovos em 1 ${periodos[tempo - 1]}, a taxa de postura aproximada é de ≈${resultado.toLocaleString('pt-BR', {style: 'percent'})}`;
+            mensagem.innerHTML = `Levando em consideração uma produção de <span>${aves} galinhas</span>, que <span>produzem ${ovos} ovos em 1 ${periodos[tempo - 1]}</span>, a taxa de postura aproximada é de <span>≈${resultado.toLocaleString('pt-BR', {style: 'percent'})}</span>`;
 
-            mensagem.innerHTML += `<br> Em condições térmicas controladas e postura ideal (≈93%), esta produção pode atingir até ≈${resultadoIdeal.toFixed()} ovos, ou seja, uma diferença de ${diferenca.toFixed(1)}%.`;
+            mensagem.innerHTML += `<br><br> <span>Em condições térmicas controladas e postura ideal</span> (≈93%), esta produção <span>pode atingir até ≈${resultadoIdeal.toFixed()} ovos</span>, ou seja, uma diferença de <span>${diferenca.toFixed(1)}%.</span>`;
     
         } else if (resultado < 1.01){
 
@@ -125,17 +141,17 @@
         if (taxa < .93) {
 
             if (taxa < .75) {
-                mensagem.innerHTML = `Sua produção apresenta uma taxa de postura comparável à <b>situações extremas</b> de estresse climático.</br></br>`;
+                mensagem.innerHTML = `Sua produção apresenta uma taxa de postura comparável à <span><b>situações extremas</b> de estresse climático.</span></br></br>`;
             } else if (taxa < .90){
-                mensagem.innerHTML = `Sua produção apresenta uma taxa de postura comparável à <b>situações amenas</b> de estresse climático.</br></br>`;
+                mensagem.innerHTML = `Sua produção apresenta uma taxa de postura comparável à <span><b>situações amenas</b> de estresse climático.</span></br></br>`;
             } else {
-                mensagem.innerHTML = `Sua produção apresenta uma taxa de postura comparável à situações ideais de controle de temperatura e umidade.</br></br>`;
+                mensagem.innerHTML = `Sua produção apresenta uma taxa de postura comparável à <span>situações ideais de controle de temperatura e umidade.</span></br></br>`;
             }
 
             
             mensagem.innerHTML += `Nos parâmetros atuais a sua produção gera ${lucroAtual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}/ano. <br>
             Potencial de retorno em cenário de controle ideal: ${lucroIdeal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}/ano <br><br>
-            <b>Diferença de ganhos devido ao descontrole de umidade e temperatura: ${dif.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</b>`;
+            <b><span>Diferença de ganhos devido ao descontrole de umidade e temperatura: ${dif.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span></b>`;
             
         } else mensagem.innerHTML = `Entrada inválida: a taxa inserida excede o limite fisiológico habitual das aves. `;
 
