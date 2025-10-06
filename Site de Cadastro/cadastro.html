@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="direita">
+        <img src="imgs/RectangleTopo.svg" id="direita">
+        
+        <div class="texto">
+            <p class="titulo">Cadastre o cliente:</p>
+            <br>
+            <p>Cadastre os principais dados da empresa, todos os campos são obrigatórios. 
+            Ao final, clique em gerar senha para enviar ao cliente sua senha temporária.</p>
+        </div>
+    </div>
+    
+    <div class="container">
+
+        <div class="container_iptEsquerda">
+        
+            <div class="campo_container">
+                <div class="empresa_container">
+                    <p>Nome da empresa</p>
+                    <input type="text" id="ipt_nomeEmpresa" placeholder="Informe o nome da empresa" style="border: 1px solid black;">
+                </div>
+            </div>
+
+            <div class="campo_container">
+                <div class="responsavel_container">
+                    <p>Nome do responsável</p>
+                    <input type="text" id="ipt_nomeResponsavel" placeholder="Informe o responsável" style="border: 1px solid black;">
+                </div>
+            </div>
+
+            <div class="campo_container">
+                <div class="email_container">
+                    <p>Email</p>
+                    <input type="text" id="ipt_email" placeholder="Ex: AnaMatos@gmail.com" style="border: 1px solid black;">
+                    <div class="msg" id="div_msgEmail" style="color: red;"></div>
+                </div>
+            </div>
+
+            <div class="campo_container">
+                <div class="telefone_container">
+                    <p>Telefone</p>
+                    <input type="number" id="ipt_telefone" placeholder="Informe o telefone" style="border: 1px solid black;">
+                    <div class="msg" id="div_msgTelefone" style="color: red;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container_iptDireita">
+
+            <div class="campo_container">
+                <div class="senha_container">
+                    <p>Senha</p>
+                    <input type="password" id="ipt_senha" placeholder="Informe a senha" style="border: 1px solid black;">
+                </div>
+            </div>
+
+            <div class="campo_container">
+                <div class="confSenha_container">
+                    <p>Repita a senha</p>
+                    <input type="password" id="ipt_confSenha" placeholder="Repita a senha" style="border: 1px solid black;">
+                    <div class="msg" id="div_msgSenha" style="color: red;"></div>
+                </div>
+            </div>
+
+            <div>
+                <div class="mostrar_senhas"></div>
+                <input type="checkbox" id="mostrarSenha" onclick="mostrarSenha()">
+                Mostrar senhas
+            </div>
+
+            <div id="div_mensagem" style="color: red;"></div>
+            
+            <button class="cadastrar" onclick="cadastrar()">Cadastrar</button>
+        </div>  
+    </div>
+
+<a href="">Voltar a página anterior</a>
+
+    <div class="imgEsquerda">
+        <img src="imgs/RectangleBaixo.svg" id="esquerda">
+    </div>      
+    
+</body>
+</html>
+<script>
+    function mostrarSenha() {
+        var senha1 = ipt_senha;
+        var senha2 = ipt_confSenha;
+
+        if (senha1.type == 'password') {
+            senha1.type = 'text';
+            senha2.type = 'text';
+        } else {
+            senha1.type = 'password';
+            senha2.type = 'password';
+        }
+    }
+
+    function cadastrar() {
+        var nomeEmpresa = ipt_nomeEmpresa.value;
+        var nomeResponsavel = ipt_nomeResponsavel.value;
+        var email = ipt_email.value;
+        var telefone = ipt_telefone.value;
+        var senha = ipt_senha.value;
+        var confSenha = ipt_confSenha.value;
+
+        var mensagem = "";
+        var msgTelefone = "";
+        var msgEmail = "";
+        var msgSenha = "";
+
+        ipt_nomeEmpresa.style.border = "1px solid black";
+        ipt_nomeResponsavel.style.border = "1px solid black";
+        ipt_email.style.border = "1px solid black";
+        ipt_telefone.style.border = "1px solid black";
+        ipt_senha.style.border = "1px solid black";
+        ipt_confSenha.style.border = "1px solid black";
+
+        if (nomeEmpresa == '' || nomeResponsavel == '' || email == '' || telefone == '' || senha == '' || confSenha == '') {
+            ipt_nomeEmpresa.style.border = "1px solid red";
+            ipt_nomeResponsavel.style.border = "1px solid red";
+            ipt_email.style.border = "1px solid red";
+            ipt_telefone.style.border = "1px solid red";
+            ipt_senha.style.border = "1px solid red";
+            ipt_confSenha.style.border = "1px solid red";
+            mensagem = `Preencha todos os campos!`;
+        }
+
+        if (nomeEmpresa != "") {
+            ipt_nomeEmpresa.style.border = "1px solid green";
+        }
+
+        if (nomeResponsavel != "") {
+            ipt_nomeResponsavel.style.border = "1px solid green";
+        }
+
+        if (telefone.length < 10) {
+            ipt_telefone.style.border = "1px solid red";
+            msgTelefone = `Insira um número válido e com DDD!`
+        } else {
+            ipt_telefone.style.border = "1px solid green";
+        }
+
+        if (email.endsWith('@gmail.com') || email.endsWith('@gmail.com.br') || 
+        email.endsWith('@hotmail.com') || email.endsWith('@hotmail.com.br') || 
+        email.endsWith('@@outlook.com') || email.endsWith('@outlook.com.br') || 
+        email.endsWith('@yahoo.com') || email.endsWith('@yahoo.com.br') || 
+        email.endsWith('@sptech.school')) {
+            // o email precisa terminar com umas dessas validaçôes.
+            ipt_email.style.border = "1px solid green";
+        } else {
+            ipt_email.style.border = "1px solid red";
+            msgEmail = `Insira um email válido!`
+        }
+
+        if (senha != confSenha) {
+            ipt_senha.style.border = "1px solid red";
+            ipt_confSenha.style.border = "1px solid red";
+            msgSenha = `Senhas precisam ser iguais!`;
+        } else if (senha != "" && senha.length < 6) {
+            ipt_senha.style.border = "1px solid red";
+            ipt_confSenha.style.border = "1px solid red";
+            msgSenha = `Senha precisa conter no mínimo 6 caracteres!`
+        } else if (senha == "" || confSenha == "") {
+            ipt_senha.style.border = "1px solid red";
+            ipt_confSenha.style.border = "1px solid red";
+        } else {
+            ipt_senha.style.border = "1px solid green";
+            ipt_confSenha.style.border = "1px solid green";
+        }
+
+        div_mensagem.innerHTML = mensagem;
+        div_msgTelefone.innerHTML = msgTelefone;
+        div_msgEmail.innerHTML = msgEmail;
+        div_msgSenha.innerHTML = msgSenha;
+    }
+</script>
