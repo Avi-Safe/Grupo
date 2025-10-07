@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back" />
 </head>
 <body>
     <div class="direita">
@@ -82,7 +83,13 @@
         </div>  
     </div>
 
-<a href="">Voltar a página anterior</a>
+<a id="voltar" href="">
+    <!-- quando juntar todas as páginas arrumo o href -->
+    <span id="seta" class="material-symbols-outlined">
+        arrow_back
+    </span>
+    Voltar a página anterior
+</a> 
 
     <div class="imgEsquerda">
         <img src="imgs/RectangleBaixo.svg" id="esquerda">
@@ -117,6 +124,12 @@
         var msgEmail = "";
         var msgSenha = "";
 
+        var emp = false;
+        var nom = false;
+        var tel = false;
+        var ema = false;
+        var sen = false;
+
         ipt_nomeEmpresa.style.border = "1px solid black";
         ipt_nomeResponsavel.style.border = "1px solid black";
         ipt_email.style.border = "1px solid black";
@@ -135,10 +148,12 @@
         }
 
         if (nomeEmpresa != "") {
+            emp = true;
             ipt_nomeEmpresa.style.border = "1px solid green";
         }
 
         if (nomeResponsavel != "") {
+            nom = true;
             ipt_nomeResponsavel.style.border = "1px solid green";
         }
 
@@ -146,6 +161,7 @@
             ipt_telefone.style.border = "1px solid red";
             msgTelefone = `Insira um número válido e com DDD!`
         } else {
+            tel = true;
             ipt_telefone.style.border = "1px solid green";
         }
 
@@ -155,6 +171,7 @@
         email.endsWith('@yahoo.com') || email.endsWith('@yahoo.com.br') || 
         email.endsWith('@sptech.school')) {
             // o email precisa terminar com umas dessas validaçôes.
+            ema = true;
             ipt_email.style.border = "1px solid green";
         } else {
             ipt_email.style.border = "1px solid red";
@@ -173,8 +190,13 @@
             ipt_senha.style.border = "1px solid red";
             ipt_confSenha.style.border = "1px solid red";
         } else {
+            sen = true;
             ipt_senha.style.border = "1px solid green";
             ipt_confSenha.style.border = "1px solid green";
+        }
+
+        if (emp == true && nom == true && tel == true && ema == true && sen == true) {
+            alert('Cadastro realizado com sucesso!');
         }
 
         div_mensagem.innerHTML = mensagem;
