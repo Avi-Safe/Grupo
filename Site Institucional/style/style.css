@@ -1,0 +1,167 @@
+body {
+    margin: 0;
+    font-family: Montserrat;
+}
+.header {
+    background-color: #FFFFFF;
+}
+.navbar {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #A1A1A1;
+    width: 1080px;
+}
+.navbar a {
+    color: #A1A1A1;
+    text-decoration: none;
+    font-style: Poppins;
+}
+.navbar button {
+    color: #B50000;
+    background-color: #FFFFFF;
+    border: #B50000;
+    border: solid;
+    border-width: 1px;
+    border-radius: 100px;
+    padding: 8px 8px;
+}
+.header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
+.header .container img {
+width: 230px;
+}
+.agora a {
+    font-weight: bold;
+}
+.banner {
+background-image: url(../assets/img/Background.jpg);
+background-size: cover;
+height: 800px;
+}
+.banner .container {
+    display: flex;
+    margin: 0;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 170px;
+}
+.banner .container p {
+    font-weight: bold;
+    color: white;
+    width: 450px;
+    font-size: 40px;
+}
+.banner .container span {
+    color: #FFFFFF;
+}
+.banner .container u {
+    text-decoration: underline;
+    text-decoration-color: #B50000;
+}
+
+.social .container{
+    display: flex;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.box1 {
+    display: flex;
+    align-items: center;
+    margin: 2.5% 7% 0 0;
+}
+
+.box1 img {
+    width: 40%;
+    margin-left: 2.5%;
+    flex: 1;
+}
+
+.box1 #img_galinha {
+    margin-right: 20%;
+}
+
+.box1 p {
+    width: 75%;
+    flex: 1;
+}
+
+.box2{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row-reverse;
+    background-color: #EFEFEF;
+    height: 20%;
+    margin-top: 2.5%;
+}
+
+.box2 img {
+    width: 30%;
+    margin-left: 150px;
+    flex: 1;
+}
+
+#img_granja {
+    width: 50%;
+}
+
+.box2 p {
+    display: flex;
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10%;
+}
+
+.cabecalho img{
+    width: 500px;
+}
+
+.simulador img {
+    width: 500px;
+}
+
+.caixa1 {
+    background-color: #B50000;
+    width: 20%;
+    height: 10%;
+}
+
+.caixa2 img{
+    width: 20%;
+}
+
+#texto-caixa2 {
+    position: absolute;
+    margin-top: 20px;
+    width: 20%;
+    color: #ffffff;
+    left: 1.2%;
+}
+
+.boxes-2{
+    display: flex;
+}
+
+.boxes-2 img{
+    width: 20%;
+}
+
+#img_suporte{
+    width: 100%;
+}
+
