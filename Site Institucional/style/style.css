@@ -1,17 +1,21 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
     margin: 0;
-    font-family: Montserrat;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: roboto, sans-serif;
 }
-.header {
-    background-color: #FFFFFF;
-}
+
+
 .navbar {
     list-style: none;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: #A1A1A1;
-    width: 1080px;
+    width: 50%;
+    margin-right: 5%;
 }
 .navbar a {
     color: #A1A1A1;
@@ -24,57 +28,70 @@ body {
     border: #B50000;
     border: solid;
     border-width: 1px;
-    border-radius: 100px;
-    padding: 8px 8px;
+    border-radius: 1em;
+    padding: 8%;
 }
+
+.navbar button:hover{
+    cursor: pointer;
+    background-color: #B50000;
+    transition: 0.5s ease-in-out;
+    color: #FFFFFF;
+}
+
+.navbar .btn-navbar:hover{
+    color: #B50000;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+
 .header .container{
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 0 15px;
 }
+
 .header .container img {
-width: 230px;
+    width: 13%;
+    margin-left: 5%;
 }
+
 .agora a {
     font-weight: bold;
+    color: #000000;
 }
+
 .banner {
-background-image: url(../assets/img/Background.jpg);
-background-size: cover;
-height: 800px;
+    background-image: url(../assets/img/Background.jpg);
+    background-size: cover;
+    height: 51em;
 }
+
 .banner .container {
     display: flex;
-    margin: 0;
     height: 100%;
     justify-content: center;
-    align-items: flex-start;
     flex-direction: column;
-    margin-left: 170px;
+    margin-left: 10%;
 }
+
 .banner .container p {
     font-weight: bold;
     color: white;
-    width: 450px;
-    font-size: 40px;
+    width: 30%;
+    font-size: 2.5em;
 }
+
 .banner .container span {
     color: #FFFFFF;
+    margin-top: 2em;
+    font-size: 1.1em;
+    width: 30%;
+    text-align: start;
 }
+
 .banner .container u {
     text-decoration: underline;
     text-decoration-color: #B50000;
-}
-
-.social .container{
-    display: flex;
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: flex-start;
-    flex-direction: column;
 }
 
 .box1 {
@@ -84,8 +101,8 @@ height: 800px;
 }
 
 .box1 img {
-    width: 40%;
-    margin-left: 2.5%;
+    width: 20%;
+    margin-left: 10%;
     flex: 1;
 }
 
@@ -96,6 +113,7 @@ height: 800px;
 .box1 p {
     width: 75%;
     flex: 1;
+    margin-right: 10%;
 }
 
 .box2{
@@ -104,7 +122,6 @@ height: 800px;
     align-items: center;
     flex-direction: row-reverse;
     background-color: #EFEFEF;
-    height: 20%;
     margin-top: 2.5%;
 }
 
@@ -127,12 +144,69 @@ height: 800px;
     margin-left: 10%;
 }
 
-.cabecalho img{
-    width: 500px;
+.boxes-2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.simulador img {
-    width: 500px;
+.pilares{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10%;
+    margin-top: 10%;
+    color: #ffffff;
+}
+
+.caixa1{
+    position: absolute;
+    right: 75%;
+    width: 50%;
+}
+
+.caixa2{
+    position: absolute;
+    left: 28%;
+}
+
+.caixa2 .elementos{
+    color: #000000;
+    width: 80%;
+    position: absolute;
+    top: 25%;
+    margin-left: 10%;
+}
+
+.caixa2 #img_suporte{
+    width: 100%;
+}
+
+.caixa3{
+    position: absolute;
+    left: 51.5%;
+    width: 17%;
+    background-color: #B50000;
+}
+
+.caixa4{
+    position: absolute;
+    left: 75%;
+}
+
+.caixa4 .elementos{
+    position: absolute;
+    color: #000000;
+    top: 20%;
+}
+
+.caixa4 #img_seguranca{
+    width: 100%;
+    height: 100%;
+}
+
+.pilares .elementos{
+    color: #ffffff;
 }
 
 .caixa1 {
@@ -143,18 +217,13 @@ height: 800px;
 
 .caixa2 img{
     width: 20%;
+    height: 100%;
 }
 
-#texto-caixa2 {
-    position: absolute;
-    margin-top: 20px;
+.pilares .box{
     width: 20%;
-    color: #ffffff;
-    left: 1.2%;
-}
-
-.boxes-2{
-    display: flex;
+    height: 30%;
+    border-radius: 10%;
 }
 
 .boxes-2 img{
@@ -164,4 +233,193 @@ height: 800px;
 #img_suporte{
     width: 100%;
 }
+
+.info{
+    background-color: #EFEFEF;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.simulador{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #B50000;
+    width: 65%;
+    margin-top: 3%;
+    border-radius: 3em;
+    margin-bottom: 3%;
+}
+
+.simulador img {
+    width: 40%;
+}
+
+.conteudo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.info .nos{
+    width: 64%;
+    margin-top: 2em;
+}
+
+.info .nos p{
+    margin-top: 2em;
+    width: 70%;
+    line-height: 2em;
+}
+
+.info .nos h2{
+    font-size: 2.2em;
+}
+
+.conteudo-items{
+    width: 50%;
+}
+
+.conteudo-items p{
+    width: 100%;
+    font-size: 1.2em;
+    font-weight: 300;
+    line-height: 1.5em;
+    margin-bottom: 5%;
+    margin-top: 10%;
+}
+
+.conteudo-items h4{
+    font-size: 2em;
+}
+
+.conteudo-items button{
+    padding: 1em;
+    border-radius: 1.2em;
+    width: 12em;
+    border: none;
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+.conteudo-items button{
+    cursor: pointer;
+}
+
+.conteudo-items button:hover{
+    background-color: #A1A1A1;
+    transition: 0.5s ease-in-out;
+}
+
+.cabecalho .primeira-img{
+    width: 100%;
+}
+
+.mensagem .container{
+    background-color: #ffffff;
+    position: absolute;
+    bottom: -330%;
+    width: 100%;
+    height: 70%;
+    border-radius: 5em 5em 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+}
+
+.mensagem .container .imagem #img_contato{
+    width: 45%;
+    margin-top: 2.5%;
+}
+
+.imagem{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.duvida{
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+    align-items: center;
+}
+
+.duvida .email{
+    margin-right: 70%;
+}
+
+.duvida h5{
+    font-size: 1.8em;
+    text-align: center;
+    width: 80%;
+}
+
+.logo-mensagem{
+    width: 10%;
+    position: absolute;
+    right: 80%;
+    bottom: 80%;
+}
+
+#input_email, #input_mensagem{
+    background-color: #EDEDED;
+    padding: 1em;
+    width: 80%;
+    border: none;
+    border-radius: 1em;
+}
+
+#input_email::placeholder, #input_mensagem::placeholder{
+    font-size: 1.2em;
+}
+
+#input_mensagem{
+    height: 13em;
+}
+
+.duvida b{
+    margin-right: 65%;
+}
+
+.enviar{
+    background-color: #B50000;
+    width: 30%;
+    padding: 1em;
+    border-radius: 1em;
+    border: none;
+    color: #FFFFFF;
+}
+
+.enviar:hover{
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+    box-shadow: 1px 1px 5px #a89595;
+}
+
+.footer{
+    position: absolute;
+    bottom: -350%;
+    width: 100%;
+    background-color: #B50000;
+}
+
+.footer .container{
+    display: flex;
+}
+
+.footer .container #img_logo{
+    width: 20%;
+}
+
+#img_face, #img_email, #img_insta{
+    width: 4em;
+}
+
+
 
