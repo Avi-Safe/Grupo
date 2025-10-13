@@ -6,6 +6,7 @@
     <title>Avi Safe | Página Inicial</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="icon" href="assets/icon/logogalinha.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 
 <body>
@@ -17,16 +18,16 @@
                         <a href="#">Home</a>
                     </li>
                     <li>
-                        <a class="btn-navbar" href="">Sobre nós</a>
+                        <a class="btn-navbar" href="#sobre-nos">Sobre nós</a>
                     </li>
                     <li>
-                        <a class="btn-navbar" href="">Contato</a>
+                        <a class="btn-navbar" href="#contato-AviSafe">Contato</a>
                     </li>
                     <li>
                         <a class="btn-navbar" href="">Nosso produto</a>
                     </li>
                     <li>
-                        <a class="btn-navbar" href="">Simulador financeiro</a>
+                        <a class="btn-navbar" href="#simulador-financeiro">Simulador financeiro</a>
                     </li>
                     <li>
                         <button onclick="login()">Credenciados</button>
@@ -69,38 +70,38 @@
             <div class="boxes-2">
                 <div class="caixa1 box">
                     <div class="elementos">
-                        <h4>40%</h4>
-                        <b>Diminua perdas em até:</b>
+                        <h4> <span class="numeroMaior"> 40% </span></h4>
+                        <p class="negrito">Diminua perdas em até:</p>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident </p>
                     </div>
                 </div>
                 <div class="caixa2 box">
                     <img id="img_suporte" src="assets/icon/suporte.jpg">
                     <div class="elementos">
-                        <h4 class="title">Suporte</h4>
-                        <p class="paragraph">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident</p>
+                        <h4 class="title"> <span class="textoMaior"> Suporte </span></h4>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident</p>
                     </div>
                 </div>
                 <div class="caixa3 box">
                     <div class="elementos">
-                        <h4>100%</h4>
-                        <b>De cobertura</b>
+                        <h4> <span class="numeroMaior"> 100% </span></h4>
+                        <p class="negrito">De cobertura</p>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident </p>
                     </div>
                 </div>
                 <div class="caixa4 box">
                     <img id="img_seguranca" src="assets/icon/segurança.jpg" >
                     <div class="elementos">
-                        <h4>Segurança total</h4>
+                        <h4> <span class="textoMaior"> Segurança total </span></h4>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident </p>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="info">
+        <div class="info" id="sobre-nos">
             <div class="nos">
                 <h2>Sobre nós</h2>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
+                <p id="simulador-financeiro">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
                    vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
                    minima.</p>
             </div>
@@ -120,8 +121,8 @@
     <div class="mensagem">
         <div class="cabecalho">
             <img class="primeira-img" src="assets/icon/image 9.jpg">
-            <div class="container">
-                <iv class="imagem">
+            <div class="container" id="contato-AviSafe">
+                <div class="imagem">
                     <img id="img_contato" src="assets/icon/Rectangle 463.jpg">
                     <img class="logo-mensagem" src="assets/icon/Logo.png">
                     <div class="duvida">
@@ -139,10 +140,18 @@
     </div>
     <div class="footer">
         <div class="container">
-            <i class="fa-brands fa-instagram"></i>
-            <i class="fa-brands fa-facebook"></i>
-            <i class="fa-solid fa-envelope"></i>
-                    <li class="agora">
+            <div class="mini-container">
+                <div class="icons">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-solid fa-envelope"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+                <div class="direitos">
+                    <p>Todos os direitos reservados</p>
+                </div>
+            </div>
+                <div class="lista">
+                    <li>
                         <a href="#">Home</a>
                     </li>
                     <li>
@@ -152,14 +161,19 @@
                         <a href="#">Contato</a>
                     </li>
                     <li>
-                        <a href="#">Nosso produto</a>
-                    </li>
-                    <li>
                         <a href="#">Simulador financeiro</a>
                     </li>
-                    <p>Todos os direitos reservados</p>
-                    <img id="img_logo" src="assets/icon/Logo.png" alt="">
+                    <div class="footer-logo">
+                        <img id="img_logo" src="assets/icon/Logo.png" alt="">
+                    </div>
+                </div>
         </div>
     </div>
 </body>
 </html>
+
+<script>
+   function simule() {
+        window.location.href = "../Calculadora Financeira/calculadora.html";
+    }
+</script>
