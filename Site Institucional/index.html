@@ -10,12 +10,12 @@
 </head>
 
 <body>
-    <div class="header">
+    <div class="header" id="casa">
         <div class="container">
             <img id="logo" src="assets/icon/Logo.png"> 
                 <ul class="navbar">
                     <li class="agora">
-                        <a href="#">Home</a>
+                        <a href="#casa">Home</a>
                     </li>
                     <li>
                         <a class="btn-navbar" href="#sobre-nos">Sobre nós</a>
@@ -130,7 +130,7 @@
                         <b class="email">Email</b>
                         <input type="text" id="input_email" placeholder="Seu melhor email vai aqui!">
                         <b>Mensagem</b>
-                        <input type="text" id="input_mensagem" placeholder="Fale um pouco sobre o que deseja...">
+                        <input type="text" id="input_mensagem" placeholder="Fale um pouco sobre o que deseja...  (Min. 20 caractéres)">
                         <button class="enviar" onclick="enviar()">Enviar</button>
                     </div>
                 </div>
@@ -152,16 +152,16 @@
             </div>
                 <div class="lista">
                     <li>
-                        <a href="#">Home</a>
+                        <a href="#casa">Home</a>
                     </li>
                     <li>
-                        <a href="#">Sobre nós</a>
+                        <a href="#sobre-nos">Sobre nós</a>
                     </li>
                     <li>
-                        <a href="#">Contato</a>
+                        <a href="#contato-AviSafe">Contato</a>
                     </li>
                     <li>
-                        <a href="#">Simulador financeiro</a>
+                        <a href="#simulador-financeiro">Simulador financeiro</a>
                     </li>
                     <div class="footer-logo">
                         <img id="img_logo" src="assets/icon/Logo.png" alt="">
@@ -175,5 +175,25 @@
 <script>
    function simule() {
         window.location.href = "../Calculadora Financeira/calculadora.html";
-    }
+   }
+
+   function enviar() {
+        var emailBorda = input_email;
+        var emailUser = input_email.value;
+
+        var mensagemBorda = input_mensagem;
+        var mensagemUser = input_mensagem.value;
+
+        if(emailUser.includes('@') && emailUser.includes('.com') || emailUser.includes('@') && emailUser.includes('sptech.school')){
+            emailBorda.style.border = '2px solid green';
+        }else{
+            emailBorda.style.border = '2px solid red';
+        }
+
+        if(mensagemUser.length < 20){
+            mensagemBorda.style.border = '2px solid red';
+        }else{
+            mensagemBorda.style.border = '2px solid green';
+        }
+   }
 </script>

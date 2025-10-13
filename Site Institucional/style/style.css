@@ -394,6 +394,7 @@ a{
     border-radius: 1em;
     border: none;
     color: #FFFFFF;
+    margin-left: 25%;
 }
 
 .enviar:hover{
