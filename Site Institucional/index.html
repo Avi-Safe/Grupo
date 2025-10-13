@@ -188,10 +188,14 @@
             emailBorda.style.border = '2px solid green';
         }else{
             emailBorda.style.border = '2px solid red';
+            emailBorda.placeholder = 'E-mail inválido!';
+            emailBorda.value = '';
         }
 
         if(mensagemUser.length < 20){
             mensagemBorda.style.border = '2px solid red';
+            mensagemBorda.placeholder = `Mensagem muito curta!`;
+            mensagemBorda.value = '';        
         }else{
             mensagemBorda.style.border = '2px solid green';
         }

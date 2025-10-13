@@ -367,6 +367,10 @@ a{
     bottom: 8.5em;
 }
 
+#input_mensagem{
+    height: 13em;
+}
+
 #input_email, #input_mensagem{
     background-color: #EDEDED;
     padding: 1em;
@@ -375,12 +379,13 @@ a{
     border-radius: 1em;
 }
 
-#input_email::placeholder, #input_mensagem::placeholder{
-    font-size: 1.2em;
+#input_email:focus, #input_mensagem:focus{
+    border: 1px solid #a89595;
+    outline: none;
 }
 
-#input_mensagem{
-    height: 13em;
+#input_email::placeholder, #input_mensagem::placeholder{
+    font-size: 1.2em;
 }
 
 .duvida b{
@@ -452,6 +457,11 @@ a{
     justify-content: center;
     margin-left: 18em;
 }   
+
+.lista a:hover{
+    color: #A1A1A1;
+    transition: 0.3s ease-in-out;
+}
 
 .mini-container{
     display: flex;
