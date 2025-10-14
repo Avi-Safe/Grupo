@@ -479,3 +479,9 @@ a{
     align-items: center;
     margin-bottom: 1em;
 }
+
+textarea {
+  vertical-align: top;      
+  padding-top: 10px;       
+  resize: none;            
+}
