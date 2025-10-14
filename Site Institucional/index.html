@@ -186,6 +186,8 @@
 
         if(emailUser.includes('@') && emailUser.includes('.com') || emailUser.includes('@') && emailUser.includes('sptech.school')){
             emailBorda.style.border = '2px solid green';
+            emailBorda.value = '';
+            emailBorda.placeholder = `Aguarde o retorno em seu e-mail`;
         }else{
             emailBorda.style.border = '2px solid red';
             emailBorda.placeholder = 'E-mail inválido!';
@@ -198,6 +200,8 @@
             mensagemBorda.value = '';        
         }else{
             mensagemBorda.style.border = '2px solid green';
+            mensagemBorda.value = '';
+            mensagemBorda.placeholder = `Mensagem enviada com sucesso!`;
         }
    }
 </script>
