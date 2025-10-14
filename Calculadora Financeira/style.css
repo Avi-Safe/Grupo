@@ -53,8 +53,23 @@ button {
     font-weight: bolder;
 }
 
+.navbar button:hover {
+    scale: 1.05;
+    background-color: #6f0c0c;
+}
+
+.navbar button:active {
+    scale: 1;
+
+}
+
 .navbar .atual {
     background-color: #B50000;
+}
+
+.navbar .atual:hover {
+    background-color: #B50000;
+    scale: 1;
 }
 
 .navbar span {
@@ -162,11 +177,33 @@ button {
     border-top: 3px solid lightgray;
     text-align: justify;
     padding: 0 3%;
+    font-size: 18px;
 
 }
 
+.data_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    border-top-left-radius: 3vh;
+    border-top-right-radius: 3vh;
+    border-top: 3px solid lightgray;
+    text-align: justify;
+    padding: 0 3%;
+    font-size: 18px;
+
+}
+
+#mensagem {
+    font-size: 25px;
+    font-weight: 100;
+}
+
 #mensagem span {
-    font-weight: bolder;
+    font-weight: 900;
     color: #B50000;
 }
 
