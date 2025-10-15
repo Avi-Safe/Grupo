@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AviSafe Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body>
+    <div class="containerDashboard">
+        <aside class="barraLateral">
+            <div>
+                <div class="mensagemBoasVindas">
+                    <p>Olá <span id="username-display"></span>!</p>
+                    <strong>bem-vindo de volta</strong>
+                </div>
+                <nav class="urls">
+                    <ul>
+                        <li><a href="#" class="ativo">painel</a></li>
+                        <li><a href="#">suporte</a></li>
+                        <li class="botaoSair"><a id="logout-button">sair</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <main class="conteudoPrincipal">
+            <header class="cartoesCabecalho">
+                <div class="containerLogo">
+                    <img src="/src/images/Frame_8.png" alt="Logo da AviSafe Solutions">
+                </div>
+                <div class="cartao vermelho">
+                    <div class="valor">2</div>
+                    <div class="rotulo">quantidade de sensores instalados:</div>
+                </div>
+                <div class="cartao verde">
+                    <div class="valor">15 C</div>
+                    <div class="rotulo">temperatura média atual:</div>
+                </div>
+                <div class="cartao laranja">
+                    <div class="valor">45%</div>
+                    <div class="rotulo">umidade média ideal</div>
+                </div>
+                <div class="cartao vermelho">
+                    <div class="valor">20</div>
+                    <div class="rotulo">quantidade de alertas nos últimos 7 dias</div>
+                </div>
+            </header>
+
+            <div class="gradeDashboard">
+                <div class="componente alertaEstresseClimatico">
+                    <h3>alerta de estresse climático</h3>
+                    <div class="info">
+                        <div>
+                            <div class="valor">15 C</div>
+                            <div>temperatura</div>
+                            <div class="subInfo">sensor B</div>
+                            <div class="subInfo">sensor A - 23C</div>
+                        </div>
+                        <div>
+                            <div class="valor">45%</div>
+                            <div>umidade</div>
+                            <div class="subInfo">sensor B</div>
+                            <div class="subInfo">sensor A - 65%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="areaGraficos">
+                    <div class="graficos">
+                        <div class="containerGrafico">
+                            <h3>Dados coletados em tempo real: temperatura</h3>
+                            <div class="canvasGrafico">
+                                <canvas width="300px" id="tempChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="containerGrafico superior">
+                            <h3>Dados coletados em tempo real: umidade</h3>
+                            <div class="canvasGrafico">
+                                <canvas width="300px" id="humidityChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="historicoGalinhas">
+                        <div class="imagemGalinha">
+                            <img class="imagem" src="/src/images/kpi.png" alt="Kpi de temperatura">
+                        </div>
+                        <div class="componente historicoAlertas">
+                            <h3>histórico de alerta</h3>
+                            <div class="caixaHistorico"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="componente sensoresComMaisAlertas">
+                    <h3>sensores que mais emitiram alertas durante 7 dias</h3>
+                    <div class="sensores">
+                        <div>
+                            <div>sensor B</div>
+                            <div class="valor">2</div>
+                            <div>umidade</div>
+                        </div>
+                        <div>
+                            <div>sensor B</div>
+                            <div class="valor">4</div>
+                            <div>temperatura</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="componente horarioMaisAlertas">
+                    <h3>horário com mais frequência de alerta</h3>
+                    <div class="hora">9:50</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var usernameDisplay = document.getElementById('username-display');
+            var logoutButton = document.getElementById('logout-button');
+
+            function gerenciarSessaoUsuario() {
+                var usuario = localStorage.getItem('dashboardUser');
+                if (!usuario) {
+                    usuario = prompt("Olá! Por favor, digite seu nome de usuário:");
+                    if (!usuario) {
+                        usuario = 'Visitante';
+                    }
+                    localStorage.setItem('dashboardUser', usuario);
+                }
+                usernameDisplay.textContent = usuario;
+            }
+
+            logoutButton.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (confirm('Você tem certeza que deseja sair?')) {
+                    localStorage.removeItem('dashboardUser');
+                    alert('Você saiu com sucesso.');
+                    location.reload();
+                }
+            });
+
+            gerenciarSessaoUsuario();
+
+            const opcoesGrafico = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { display: false },
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                },
+                elements: {
+                    line: {
+                        borderColor: '#d9363e',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: false
+                    },
+                    point: {
+                        backgroundColor: '#d9363e',
+                        radius: 4,
+                        hoverRadius: 6
+                    }
+                }
+            };
+
+            const ctxTemperatura = document.getElementById('tempChart').getContext('2d');
+            new Chart(ctxTemperatura, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                    datasets: [{
+                        label: 'Temperatura',
+                        data: [22, 40, 65, 80, 110, 130, 150, 165, 190, 220, 240, 255],
+                    }]
+                },
+                options: opcoesGrafico
+            });
+
+            const ctxUmidade = document.getElementById('humidityChart').getContext('2d');
+            new Chart(ctxUmidade, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                    datasets: [{
+                        label: 'Umidade',
+                        data: [30, 45, 60, 75, 95, 115, 135, 150, 165, 200, 230, 250],
+                    }]
+                },
+                options: opcoesGrafico
+            });
+        });
+    </script>
+</body>
+
+</html>
