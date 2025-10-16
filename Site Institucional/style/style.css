@@ -29,6 +29,7 @@ a{
     color: #A1A1A1;
     width: 50%;
     margin-right: 5%;
+    width: 850px;
 }
 
 .navbar a {
@@ -45,6 +46,7 @@ a{
     border-width: 1px;
     border-radius: 1em;
     padding: 8%;
+    width: 125px;
 }
 
 .navbar button:hover{
@@ -484,4 +486,8 @@ textarea {
   vertical-align: top;      
   padding-top: 10px;       
   resize: none;            
+}
+
+.simulador-cor-texto{
+    color: #000000;
 }

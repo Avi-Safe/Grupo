@@ -12,7 +12,7 @@
 <body>
     <div class="header" id="casa">
         <div class="container">
-            <img id="logo" src="assets/icon/Logo.png"> 
+            <img id="logo" src="./assets/icon/Logo.png"> 
                 <ul class="navbar">
                     <li class="agora">
                         <a href="#casa">Home</a>
@@ -30,7 +30,10 @@
                         <a class="btn-navbar" href="#simulador-financeiro">Simulador financeiro</a>
                     </li>
                     <li>
-                        <button onclick="login()">Credenciados</button>
+                        <button class="cadastro" onclick="cadastro()"><a href="../Site de Cadastro/cadastro.html">Cadastre-se</a></button>
+                    </li>
+                    <li>
+                        <button onclick="login()"><a href="../Site de Login/LOGIN.html"> Login </a></button>
                     </li>
                 </ul>
             </div>
@@ -51,7 +54,7 @@
         <div class="container">
             <div class="boxes">
                 <div class="box1">
-                    <img id="img_galinha" src="assets/img/galinha_01.jpg">
+                    <img id="img_galinha" src="./assets/img/galinha_01.jpg">
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate <br> asperiores provident magnam
                        vitae illum iusto fugiat atque deleniti nullased <br> iure suscipit, laborum, aliquidaccusantium cum dicta
                        minima.
@@ -61,7 +64,7 @@
                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnamvitae illum iusto fugiat atque deleniti nulsed iure suscipit, laborum, aliquaccusantium cum dictaminima.</p>
                 </div>
                 <div class="box2">
-                    <img id="img_granja" src="assets/img/granja.jpg">
+                    <img id="img_granja" src="./assets/img/granja.jpg">
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnamvitae illum iusto fugiat atque deleniti nsed iure suscipit, laborum, aliaccusantium cum dictaminima.</p>
                 </div>
             </div>
@@ -76,7 +79,7 @@
                     </div>
                 </div>
                 <div class="caixa2 box">
-                    <img id="img_suporte" src="assets/icon/suporte.jpg">
+                    <img id="img_suporte" src="./assets/icon/suporte.jpg">
                     <div class="elementos">
                         <h4 class="title"> <span class="textoMaior"> Suporte </span></h4>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident</p>
@@ -90,7 +93,7 @@
                     </div>
                 </div>
                 <div class="caixa4 box">
-                    <img id="img_seguranca" src="assets/icon/segurança.jpg" >
+                    <img id="img_seguranca" src="./assets/icon/segurança.jpg" >
                     <div class="elementos">
                         <h4> <span class="textoMaior"> Segurança total </span></h4>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident </p>
@@ -108,11 +111,11 @@
             <div class="simulador">
                 <!-- <img id="img_backgroud" src="assets/img/fundo_simule.jpg"> -->
                 <div class="conteudo"> 
-                    <img id="png" src="assets/icon/image-removebg-preview 1.png">
+                    <img id="png" src="./assets/icon/image-removebg-preview 1.png">
                     <div class="conteudo-items">
                         <h4>Simulador Financeiro</h4>
                         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnamvitae illum iusto fugiat atque deleniti nsed iure suscipit, laborum, aliaccusantium cum dictaminima.</p>
-                        <button onclick="simule()">Simule já!</button>
+                        <button onclick="simule()"><a class="simulador-cor-texto" href="../Site de Login/LOGIN.html">Simule já!</a></button>
                     </div>
                 </div>
             </div>
@@ -120,11 +123,11 @@
     </div>
     <div class="mensagem">
         <div class="cabecalho">
-            <img class="primeira-img" src="assets/icon/image 9.jpg">
+            <img class="primeira-img" src="./assets/icon/image 9.jpg">
             <div class="container" id="contato-AviSafe">
                 <div class="imagem">
-                    <img id="img_contato" src="assets/icon/Rectangle 463.jpg">
-                    <img class="logo-mensagem" src="assets/icon/Logo.png">
+                    <img id="img_contato" src="./assets/icon/Rectangle 463.jpg">
+                    <img class="logo-mensagem" src="./assets/icon/Logo.png">
                     <div class="duvida">
                         <h5>Entre em contato conosco para orçamentos e dúvidas</h5>
                         <b class="email">Email</b>
@@ -164,7 +167,7 @@
                         <a href="#simulador-financeiro">Simulador financeiro</a>
                     </li>
                     <div class="footer-logo">
-                        <img id="img_logo" src="assets/icon/Logo.png" alt="">
+                        <img id="img_logo" src="./assets/icon/Logo.png" alt="">
                     </div>
                 </div>
         </div>
@@ -173,10 +176,6 @@
 </html>
 
 <script>
-   function simule() {
-        window.location.href = "../Calculadora Financeira/calculadora.html";
-   }
-
    function enviar() {
         var emailBorda = input_email;
         var emailUser = input_email.value;
