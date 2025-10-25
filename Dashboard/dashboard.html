@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/src/style.css">
+    <link rel="stylesheet" href="src/style.css">
 </head>
 
 <body>
@@ -24,7 +24,7 @@
                     <ul>
                         <li><a href="#" class="ativo">painel</a></li>
                         <li><a href="#">suporte</a></li>
-                        <li class="botaoSair"><a id="logout-button">sair</a></li>
+                        <li class="botaoSair"><a id="logout-button" href="../Site Institucional/index.html">sair</a></li>
                     </ul>
                 </nav>
             </div>
@@ -33,7 +33,7 @@
         <main class="conteudoPrincipal">
             <header class="cartoesCabecalho">
                 <div class="containerLogo">
-                    <img src="/src/images/Frame_8.png" alt="Logo da AviSafe Solutions">
+                    <img src="src/images/Frame_8.png" alt="Logo da AviSafe Solutions">
                 </div>
                 <div class="cartao vermelho">
                     <div class="valor">2</div>
@@ -90,7 +90,7 @@
 
                     <div class="historicoGalinhas">
                         <div class="imagemGalinha">
-                            <img class="imagem" src="/src/images/kpi.png" alt="Kpi de temperatura">
+                            <img class="imagem" src="src/images/kpi.png" alt="Kpi de temperatura">
                         </div>
                         <div class="componente historicoAlertas">
                             <h3>histórico de alerta</h3>
@@ -124,34 +124,7 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var usernameDisplay = document.getElementById('username-display');
-            var logoutButton = document.getElementById('logout-button');
-
-            function gerenciarSessaoUsuario() {
-                var usuario = localStorage.getItem('dashboardUser');
-                if (!usuario) {
-                    usuario = prompt("Olá! Por favor, digite seu nome de usuário:");
-                    if (!usuario) {
-                        usuario = 'Visitante';
-                    }
-                    localStorage.setItem('dashboardUser', usuario);
-                }
-                usernameDisplay.textContent = usuario;
-            }
-
-            logoutButton.addEventListener('click', function (e) {
-                e.preventDefault();
-                if (confirm('Você tem certeza que deseja sair?')) {
-                    localStorage.removeItem('dashboardUser');
-                    alert('Você saiu com sucesso.');
-                    location.reload();
-                }
-            });
-
-            gerenciarSessaoUsuario();
-
-            const opcoesGrafico = {
+            var opcoesGrafico = {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
@@ -208,7 +181,7 @@
                 },
                 options: opcoesGrafico
             });
-        });
+       
     </script>
 </body>
 
