@@ -8,8 +8,10 @@ const SERIAL_BAUD_RATE = 9600;
 const SERVIDOR_PORTA = 3300;
 
 // habilita ou desabilita a inserção de dados no banco de dados
-const HABILITAR_OPERACAO_INSERIR = false;
+const HABILITAR_OPERACAO_INSERIR = true;
 
+var s1 = 0;
+var s2 = 0;
 // função para comunicação serial
 const serial = async (
     valoresSensorTemperatura,
@@ -19,11 +21,11 @@ const serial = async (
     // conexão com o banco de dados MySQL
     let poolBancoDados = mysql.createPool(
         {
-            host: 'HOST_DO_BANCO',
-            user: 'USUARIO_DO_BANCO',
-            password: 'SENHA_DO_BANCO',
-            database: 'DATABASE_DO_BANCO',
-            port: 3306
+            host: 'localhost',
+            user: 'aluno',
+            password: 'Sptech#2024',
+            database: 'avisafe',
+            port: 3307
         }
     ).promise();
 
@@ -60,13 +62,20 @@ const serial = async (
 
         // insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
-
+            
             // este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
-                'INSERT INTO medida (sensor_Temperatura, sensor_Umidade) VALUES (?, ?)',
-                [sensorTemperatura, sensorUmidade]
+                'INSERT INTO coleta (idColeta, fkSensor, temp, umidade, dtColeta, hrColeta) VALUES (?, 1, ?, ?, current_date(), current_time())',
+                [++s1, sensorTemperatura, sensorUmidade]
             );
             console.log("valores inseridos no banco: ", sensorTemperatura + ", " + sensorUmidade);
+
+            await poolBancoDados.execute(
+                'INSERT INTO coleta (idColeta, fkSensor, temp, umidade, dtColeta, hrColeta) VALUES (?, 2, ?, ?, current_date(), current_time())',
+                [++s2, sensorTemperatura+8.00, sensorUmidade+8]
+            );
+            console.log(`valores inseridos no banco: ${sensorTemperatura+8.00}, ${sensorUmidade+8}`);
+
 
         }
 
