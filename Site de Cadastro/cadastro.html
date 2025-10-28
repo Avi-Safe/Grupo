@@ -83,7 +83,7 @@
         </div>  
     </div>
 
-<a id="voltar" href="">
+<a id="voltar" href="../Site Institucional/index.html">
     <!-- quando juntar todas as páginas arrumo o href -->
     <span id="seta" class="material-symbols-outlined">
         arrow_back
@@ -98,6 +98,8 @@
 </body>
 </html>
 <script>
+    var listaObrigatorio = ['!', '@', '#', '$', '%', '*', '.', '_', '-'];
+
     function mostrarSenha() {
         var senha1 = ipt_senha;
         var senha2 = ipt_confSenha;
@@ -178,11 +180,13 @@
             msgEmail = `Insira um email válido!`
         }
 
+        var tamSenha = senha.length;
+
         if (senha != confSenha) {
             ipt_senha.style.border = "1px solid red";
             ipt_confSenha.style.border = "1px solid red";
             msgSenha = `Senhas precisam ser iguais!`;
-        } else if (senha != "" && senha.length < 6) {
+        } else if (senha != "" && tamSenha < 6) {
             ipt_senha.style.border = "1px solid red";
             ipt_confSenha.style.border = "1px solid red";
             msgSenha = `Senha precisa conter no mínimo 6 caracteres!`
@@ -190,13 +194,28 @@
             ipt_senha.style.border = "1px solid red";
             ipt_confSenha.style.border = "1px solid red";
         } else {
-            sen = true;
-            ipt_senha.style.border = "1px solid green";
-            ipt_confSenha.style.border = "1px solid green";
+            var i = 0;
+            var contemAlgum = false;
+
+            while (i < listaObrigatorio.length) {
+                if (senha.includes(listaObrigatorio[i])) {
+                    contemAlgum = true;
+                }
+                i++;
+            }
+
+            if (contemAlgum == false) {
+                msgSenha = "Senha inválida! Falta caractere especial (! @ # $ % * . _ -)";
+            } else {
+                sen = true;
+                ipt_senha.style.border = "1px solid green";
+                ipt_confSenha.style.border = "1px solid green";
+            }
         }
 
         if (emp == true && nom == true && tel == true && ema == true && sen == true) {
             alert('Cadastro realizado com sucesso!');
+            window.location.href = "../Dashboard/landing.html";
         }
 
         div_mensagem.innerHTML = mensagem;
