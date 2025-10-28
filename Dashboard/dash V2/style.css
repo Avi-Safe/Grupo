@@ -215,11 +215,11 @@ h5 { margin: 0; font-size: 1vw; }
 }
 
 .baixoDireita {
+    grid-area: alertas;
+    width: 15vw;
     text-align: center;
     border-radius: 2vh;
-    background-color: #f3b20f;
-    margin-left: 2%;
-    flex: 1;
+    background-color: #b50000;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -227,21 +227,65 @@ h5 { margin: 0; font-size: 1vw; }
 }
 
 .historicoAlertas {
-    background-color: #f3f3f3;
-    border-radius: 2vh;
+    grid-area: alertas;
+    background-color: rgba(255, 255, 255, 0.2);
     width: 90%;
     height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1% 0;
+    padding: 2%;
+    overflow-y: auto
+}
+
+.alertaNotif {
+    background-color: #e01212;
+    text-align: center;
+    border-radius: 2vh;
+    width: 90%;
+    height: 20vh;
+    background-color: #f3f3f3;
 }
 
 .containerIndividual {
     flex: 1;
-    display: flex;
+    display: grid;
+    
+    grid-template-areas: 
+    "temp umi medidas alertas"
+    "rank grafico1 grafico1 alertas"
+    "num grafico2 grafico2 alertas";
     gap: 2%;
-    padding: .5%;
+    padding: 1%;
     border-radius: 0 3vh 3vh 0;
     background-color: #fff;
 }
 
+#temp {
+    grid-area: temp;
+}
+
+#umi {
+    grid-area: umi;
+}
+
+#grafico1 {
+    grid-area: grafico1;
+}
+
+#grafico2 {
+    grid-area: grafico2;
+}
+
+#rank {
+    grid-area: rank;
+}
+
+#num {
+    grid-area: num;
+}
 .cardIndividual {
     border-radius: 3vh;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
@@ -262,12 +306,14 @@ h5 { margin: 0; font-size: 1vw; }
     width: 70%;
 }
 .cardIndividual .info {
+    grid-area: medidas;
     padding: 0;
 }
 
 .alertasIndividual{
     border-radius: 2vh;
     padding: 1%;
+    margin: 1%;
     border: .2vh rgba(0, 0, 0, 0.173) solid;
     background-color: rgba(0, 0, 0, 0.173);
     flex: 1;
