@@ -76,7 +76,6 @@ const serial = async (
             );
             console.log(`valores inseridos no banco: ${sensorTemperatura+8.00}, ${sensorUmidade+8}`);
 
-
         }
 
     });
