@@ -33,12 +33,15 @@
 
 <script>
    function logar() {
+      window.location.href = "/Grupo/Dashboard/dash V2/landing.html";
       var usuario = ipt_email.value
       var senha = ipt_senha.value
       if (usuario == "frizza.araripe@sptech.school" && senha == "Sptech2025") {
-         alert(`seja bem vindo`)
+         alert(`Seja bem vindo!`)
+         window.location.href = '/Grupo/Dashboard/landing.html';
       } else {
-         alert(`usuario nao encontrado`)
+         alert(`Usuário não encontrado.`)
+         window.location.href = 'LOGIN.HTML';
       }
    }
 </script>
