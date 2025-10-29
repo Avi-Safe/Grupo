@@ -203,6 +203,16 @@ button {
 
 }
 
+#voltar {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 #mensagem {
     font-size: 25px;
     font-weight: 100;
