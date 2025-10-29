@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
+   <title>Login</title>
    <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back" />
 </head>
-
-  
 <body>
-  <div class="pai">
-    <div class="esquerda">
-      <h1>Entre em sua conta</h1> 
-      <p>Insira suas credenciais para <br> entrar em sua conta</p> <br>
-      <span>Email:</span> <br>
-      <input type="text"  id="ipt_email" placeholder="Ex: avisafe@gmail.com"> <br>
-      <span>Senha:</span> <br>
-      <input type="password"  id="ipt_senha" placeholder="Insira sua senha"> <br>
-       <p id="caracteres">Deve ter mais de oito caracteres</p>
-      <button onclick="logar()">Entrar</button>
-     
-      <small>Ainda não tem uma conta?</small>
-    </div>
-    <div class="direita"></div>
-  </div>
+   <div class="pai">
+      <div class="esquerda">
+         <h1>Entre em sua conta</h1> 
+         <p>Insira suas credenciais para <br> entrar em sua conta</p> <br>
+         <span>Email:</span> <br>
+         <input type="text"  id="ipt_email" placeholder="Ex: avisafe@gmail.com"> <br>
+         <span>Senha:</span> <br>
+         <input type="password"  id="ipt_senha" placeholder="Insira sua senha"> <br>
+         <p id="caracteres">Deve ter mais de oito caracteres</p>
+         <button onclick="logar()">Entrar</button>
+         
+         <small>Ainda não tem uma conta?</small>
+         <a id="voltar" href="../Site Institucional/index.html">
+            <!-- quando juntar todas as páginas arrumo o href -->
+            <span id="seta" class="material-symbols-outlined">
+               arrow_back
+            </span>
+            Voltar a página anterior
+         </a>
+      </div>
+      <div class="direita"></div>
+   </div>
 </body>
 </html>
-
-
-
 
 <script>
    function logar() {

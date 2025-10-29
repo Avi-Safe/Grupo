@@ -69,8 +69,8 @@ button {
     display: flex;
     align-items: center;
     padding-right: 80%;
-    color: black;
     font-size: 14px;
+    color: black;
 }
 
 .imgEsquerda {
