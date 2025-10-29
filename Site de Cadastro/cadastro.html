@@ -162,6 +162,9 @@
         if (telefone.length < 10) {
             ipt_telefone.style.border = "1px solid red";
             msgTelefone = `Insira um número válido e com DDD!`
+        } else if (telefone.length > 11) {
+            ipt_telefone.style.border = "1px solid red";
+            msgTelefone = `Grande demais! Insira um número válido!`
         } else {
             tel = true;
             ipt_telefone.style.border = "1px solid green";
