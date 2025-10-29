@@ -22,13 +22,6 @@
     <div class="container">
 
         <div class="container_iptEsquerda">
-        
-            <div class="campo_container">
-                <div class="empresa_container">
-                    <p>Nome da empresa</p>
-                    <input type="text" id="ipt_nomeEmpresa" placeholder="Informe o nome da empresa" style="border: 1px solid black;">
-                </div>
-            </div>
 
             <div class="campo_container">
                 <div class="responsavel_container">
@@ -83,7 +76,7 @@
         </div>  
     </div>
 
-<a id="voltar" href="../Site Institucional/index.html">
+<a id="voltar" href="../Dashboard/landing.html">
     <!-- quando juntar todas as páginas arrumo o href -->
     <span id="seta" class="material-symbols-outlined">
         arrow_back
@@ -114,7 +107,6 @@
     }
 
     function cadastrar() {
-        var nomeEmpresa = ipt_nomeEmpresa.value;
         var nomeResponsavel = ipt_nomeResponsavel.value;
         var email = ipt_email.value;
         var telefone = ipt_telefone.value;
@@ -126,32 +118,24 @@
         var msgEmail = "";
         var msgSenha = "";
 
-        var emp = false;
         var nom = false;
         var tel = false;
         var ema = false;
         var sen = false;
 
-        ipt_nomeEmpresa.style.border = "1px solid black";
         ipt_nomeResponsavel.style.border = "1px solid black";
         ipt_email.style.border = "1px solid black";
         ipt_telefone.style.border = "1px solid black";
         ipt_senha.style.border = "1px solid black";
         ipt_confSenha.style.border = "1px solid black";
 
-        if (nomeEmpresa == '' || nomeResponsavel == '' || email == '' || telefone == '' || senha == '' || confSenha == '') {
-            ipt_nomeEmpresa.style.border = "1px solid red";
+        if (nomeResponsavel == '' || email == '' || telefone == '' || senha == '' || confSenha == '') {
             ipt_nomeResponsavel.style.border = "1px solid red";
             ipt_email.style.border = "1px solid red";
             ipt_telefone.style.border = "1px solid red";
             ipt_senha.style.border = "1px solid red";
             ipt_confSenha.style.border = "1px solid red";
             mensagem = `Preencha todos os campos!`;
-        }
-
-        if (nomeEmpresa != "") {
-            emp = true;
-            ipt_nomeEmpresa.style.border = "1px solid green";
         }
 
         if (nomeResponsavel != "") {
@@ -216,7 +200,7 @@
             }
         }
 
-        if (emp == true && nom == true && tel == true && ema == true && sen == true) {
+        if (nom == true && tel == true && ema == true && sen == true) {
             alert('Cadastro realizado com sucesso!');
             window.location.href = "../Dashboard/landing.html";
         }
