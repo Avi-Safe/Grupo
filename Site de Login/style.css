@@ -89,11 +89,33 @@ span { margin-right: 450px; }
   margin-right: 240px;
 }
 
-#voltar {
-  margin-bottom: 10px;
+.voltar {
+  width: 2.5vw;
+  height: 2.5vw;
   display: flex;
-  align-items: center;
-  font-size: 14px;
   color: black;
   text-decoration: none;
+  transition: scale 0.4s ease;
+}
+
+#voltar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 2vw;
+  margin-right: 25vw;
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+  transition: scale 0.4s ease;
+}
+
+#voltar:hover {
+  scale: 1.1;
+  cursor: pointer;
+}
+
+label {
+  cursor: pointer;
 }

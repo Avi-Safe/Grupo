@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
-* {
+*{
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     text-decoration: none;
@@ -40,7 +40,6 @@ body {
     border-radius: 20px;
 }
 
-
 .campo_container input {
     width: 500px;
     padding: 10px;
@@ -64,17 +63,35 @@ button {
     width: 150px;
 }
 
-#voltar {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    padding-right: 80%;
-    font-size: 14px;
-    color: black;
+.cadastrar {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: scale 0.4s ease;
+}
+
+.cadastrar:hover {
+    scale: 1.1;
 }
 
 .imgEsquerda {
     padding-right: 814px;
     display: flex;
     align-items: flex-end;
+}
+
+#voltar {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  margin-right: 80%;
+  transition: scale 0.4s ease;
+}
+
+#voltar:hover {
+    scale: 1.1;
 }
