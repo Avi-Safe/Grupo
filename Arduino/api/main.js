@@ -105,7 +105,7 @@ const servidor = (
         console.log(`API executada com sucesso na porta ${SERVIDOR_PORTA}`);
     });
 
-    // define os endpoints da API para cada tipo de sensor
+    // define os endpoints da API para cada tipo -1de sensor
     app.get('/sensores/Temperatura', (_, response) => {
         return response.json(valoresSensorTemperatura);
     });
