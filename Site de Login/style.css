@@ -52,7 +52,7 @@ body {
   background-color: #e2e2e2c8;
 }
 
-.esquerda button {
+.esquerda .botao {
   width: 84%;
   padding: 12px;
   background-color: #d10000;
@@ -64,7 +64,7 @@ body {
   font-weight: bold;
 }
 
-.esquerda button:hover {
+.esquerda .botao:hover {
   background-color: #ffdbdb;
   color: #ff0000;
 }
@@ -106,7 +106,10 @@ span { margin-right: 450px; }
   margin-right: 30vw;
 }
 
+
 #olhoSenha {
+  width: 1vw;
+  height: 1vw;
   position: absolute;
   transition: scale 0.4s ease;
   margin-top: 7vw;
