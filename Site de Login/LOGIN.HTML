@@ -5,34 +5,53 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Login</title>
    <link rel="stylesheet" href="style.css">
+   <link rel="icon" href="logogalinha.png">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
    <div class="pai">
       <div class="esquerda">
          <h1>Entre em sua conta</h1> 
+
          <p>Insira suas credenciais para <br> entrar em sua conta</p> <br>
          <span>Email:</span> <br>
          <input type="text"  id="ipt_email" placeholder="Ex: avisafe@gmail.com"> <br>
+
          <span>Senha:</span> <br>
-         <input type="password"  id="ipt_senha" placeholder="Insira sua senha"> <br>
-         <p id="caracteres">Deve ter mais de oito caracteres</p>
-         <button onclick="logar()">Entrar</button>
-         <small>Ainda não tem uma conta?</small>
+         <i id="olhoSenha" class="fa-solid fa-eye" onclick="mostrarSenha()"></i>  
+         <input type="password" id="ipt_senha"  placeholder="Insira sua senha" >
          
+         <p id="caracteres">Deve ter mais de oito caracteres</p>
+
+         <button onclick="logar()">Entrar</button>
          
          <a id="voltar" href="../Site Institucional/index.html">
             <img class="voltar" src="seta.png" >
             <label>Voltar a página anterior</label>
          </a> 
+         
       </div>
       <div class="direita"></div>
    </div>
 </body>
 </html>
 <script>
+
+   function mostrarSenha() {
+      var senha = ipt_senha;
+
+      if (senha.type == 'password') {
+         senha.type = 'text';
+         senha.type = 'text';
+      } else {
+         senha.type = 'password';
+         senha.type = 'password';
+      }
+   }
+
    function logar() {
-      var usuario = ipt_email.value
-      var senha = ipt_senha.value
+      var usuario = ipt_email.value;
+      var senha = ipt_senha.value;
       if (usuario == "frizza.avisafe@gmail.com" && senha == "Sptech2025") {
          alert(`Seja Bem Vindo!`);
          window.location.href = '../Dashboard/landing.html'

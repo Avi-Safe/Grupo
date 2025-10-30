@@ -5,17 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="imgs/logogalinha.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
     <div class="direita">
         <img src="imgs/RectangleTopo.svg" id="direita">
         
         <div class="texto">
-            <p class="titulo">Cadastre o cliente:</p>
+            <p class="titulo">Cadastre os usuários:</p>
             <br>
-            <p>Cadastre os principais dados da empresa, todos os campos são obrigatórios. 
-            Ao final, clique em gerar senha para enviar ao cliente sua senha temporária.</p>
+            <p>Cadastre os usuários de sua empresa, todos os campos são obrigatórios. 
+            Ao final, clique em cadastrar para criar o usuário que terá acesso a Dashboard.</p>
         </div>
     </div>
     
@@ -66,8 +68,7 @@
 
             <div>
                 <div class="mostrar_senhas"></div>
-                <input type="checkbox" id="mostrarSenha" onclick="mostrarSenha()">
-                Mostrar senhas
+                <i id="olhoSenha" class="fa-solid fa-eye" onclick="mostrarSenha()"></i>  
             </div>
 
             <div id="div_mensagem" style="color: red;"></div>
@@ -76,13 +77,13 @@
         </div>  
     </div>
 
-<a id="voltar" href="../Dashboard/landing.html">
-    <!-- quando juntar todas as páginas arrumo o href -->
-    <span id="seta" class="material-symbols-outlined">
-        arrow_back
-    </span>
-    Voltar a página anterior
-</a> 
+    <a id="voltar" href="../Dashboard/landing.html">
+        <!-- quando juntar todas as páginas arrumo o href -->
+        <span id="seta" class="material-symbols-outlined">
+            arrow_back
+        </span>
+        Voltar a página anterior
+    </a> 
 
     <div class="imgEsquerda">
         <img src="imgs/RectangleBaixo.svg" id="esquerda">
