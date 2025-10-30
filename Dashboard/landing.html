@@ -30,7 +30,6 @@
                         <li><a href="galpao1.html">Galpão 1</a></li>
                         <li><a href="galpao2.html">Galpão 2</a><div class="popupAlerta" title="Você possui alertas nesse grupo de sensores!">!</div></li>
                         <li><a href="../Site de Cadastro/cadastro.html">Cadastro</a></li>
-                        <li><a href="#">Suporte</a></li>
                         <li><a id="logout-button" href="../Site Institucional/index.html">Sair</a></li>
                     </ul>
                 </div>
@@ -72,7 +71,7 @@
                         <div class="alerta vermelho">
                             <h1>Sensor 1</h1>
                             <h3>Noroeste</h3>
-                            <h5>18°C | 55%UR</h5>
+                            <h5>35°C | 55%UR</h5>
                         </div>
                         <div class="alerta verde">
                             <h1>Sensor 2</h1>
@@ -82,7 +81,7 @@
                         <div class="alerta laranja">
                             <h1>Sensor 3</h1>
                             <h3>Sudoeste</h3>
-                            <h5>18°C | 55%UR</h5>
+                            <h5>25°C | 55%UR</h5>
                         </div>
                         <div class="alerta verde">
                             <h1>Sensor 4</h1>
@@ -147,7 +146,7 @@
             new Chart(ctxSensor1, {
                 type: 'line',
                 data: {
-                    labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                    labels: ['12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00', '13:10', '13:20', '13:30', '13:40', '13:50'],
                     datasets: [{
                         label: 'Temperatura',
                         data: [18, 15, 17, 25, 31, 29, 18, 20, 20, 21, 23, 15],
@@ -164,7 +163,7 @@
             new Chart(ctxSensor2, {
                 type: 'line',
                 data: {
-                    labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                    labels: ['12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00', '13:10', '13:20', '13:30', '13:40', '13:50'],
                     datasets: [{
                         label: 'Temperatura',
                         data: [18, 15, 17, 25, 31, 29, 18, 20, 20, 21, 23, 15],
