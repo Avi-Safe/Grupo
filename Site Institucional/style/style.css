@@ -99,11 +99,12 @@ a{
 }
 
 .banner .container span {
-    color: #FFFFFF;
+    color: #000000;
     margin-top: 2em;
     font-size: 1.1em;
     width: 30%;
     text-align: justify;
+    font-weight: 900;
 }
 
 .banner .container .textoGrifado {
@@ -386,9 +387,9 @@ a{
 
 .logo-mensagem{
     width: 10%;
-    position: relative;
-    right: 43%;
-    bottom: 9em;
+    position: absolute;
+    bottom: 21em;
+    left: 6em;
 }
 
 #input_mensagem{
