@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="logogalinha.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Dashboard</title>
+</head>
+<body>
+
+        <div class="container">
+            <div class="menuLateral">
+                <div class="containerLogo">
+                    <img src="logoredux.png" alt="Logo AviSafe" class="logo">
+                </div>
+                <div class="mensagemBoasvindas">
+                    Olá, ${nome}!
+                    <b>Bem-vindo(a) de volta</b>
+                </div>
+                <div class="nav">
+                    <ul>
+                        <li><a href="#" class="ativo">Painel</a></li>
+                        <li><a href="galpao1.html">Galpão 1</a></li>
+                        <li><a href="galpao2.html">Galpão 2</a><div class="popupAlerta" title="Você possui alertas nesse grupo de sensores!">!</div></li>
+                        <li><a href="../Site de Cadastro/cadastro.html">Cadastro</a></li>
+                        <li><a id="logout-button" href="../Site Institucional/index.html">Sair</a></li>
+                    </ul>
+                </div>
+            </div>
+<!--
+            <div class="containerLanding">
+                <div class="containerResumo">
+                    <div class="titulo">
+                        <h1>Galpão 1</h1>
+                    </div>
+                    <div class="alertasResumo">
+                        <div class="alerta verde">
+                            <h1>Sensor 1</h1>
+                            <h3>Noroeste</h3>
+                            <h5>18°C | 55%UR</h5>
+                        </div>
+                        <div class="alerta verde">
+                            <h1>Sensor 2</h1>
+                            <h3>Nordeste</h3>
+                            <h5>18°C | 55%UR</h5>
+                        </div>
+                        <div class="alerta verde">
+                            <h1>Sensor 3</h1>
+                            <h3>Sudoeste</h3>
+                            <h5>18°C | 55%UR</h5>
+                        </div>
+                        <div class="alerta verde">
+                            <h1>Sensor 4</h1>
+                           <h3> Sudeste</h3>
+                           <h5>18°C | 55%UR</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="containerResumo">
+                    <div class="titulo">
+                        <h1>Galpão 2</h1>
+                    </div>
+                    <div class="alertasResumo">
+                        <div class="alerta vermelho">
+                            <h1>Sensor 1</h1>
+                            <h3>Noroeste</h3>
+                            <h5>35°C | 55%UR</h5>
+                        </div>
+                        <div class="alerta verde">
+                            <h1>Sensor 2</h1>
+                            <h3>Nordeste</h3>
+                            <h5>18°C | 55%UR</h5>
+                        </div>
+                        <div class="alerta laranja">
+                            <h1>Sensor 3</h1>
+                            <h3>Sudoeste</h3>
+                            <h5>25°C | 55%UR</h5>
+                        </div>
+                        <div class="alerta verde">
+                            <h1>Sensor 4</h1>
+                           <h3> Sudeste</h3>
+                           <h5>18°C | 55%UR</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="containerGrafico">
+                    <h3>Média de coletas - Galpão 1</h3>
+                    <div class="canvasGrafico">
+                        <canvas id="chart1"></canvas>
+                    </div>
+                </div>
+                <div class="containerGrafico">
+                    <h3>Média de coletas - Galpão 2</h3>
+                    <div class="canvasGrafico">
+                        <canvas id="chart2"></canvas>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    -->
+        
+                    <div class="cardIndividual info">
+                        <div class="intervalos">
+                            <h3>Intervalos ideais</h3>
+                            <h3 class="esq">Umidade:</h3>
+                            <h1 class="textoVerde">40% - 60%</h1>
+                            <h3 class="esq">Temperatura:</h3>
+                            <h1 class="textoVerde">18°C - 22°C</h1>
+                            <h3 class="esq">Nivel de estresse:</h3>
+                        </div>
+                        <div class="guia">
+                            <div class="guiaIcon vermelho">EXTREMO</div>
+                            <div class="guiaIcon laranja">AMENO</div>
+                            <div class="guiaIcon verde">BOM</div>
+                        </div>
+                    
+                    </div>
+                    <div class="cardIndividual" id="rank">
+                        <div id="ranktitulo"><h3>Horários com maior incidência de alertas</h3>
+                        <h5>Últimos sete dias</h5></div>
+                        <h3 id="horario1" class="textoVermelho">1°. 12:20</h3>
+                        <h5 id="horario2">2°. 12:50</h5>
+                        <h5 id="horario3">3°. 13:50</h5>
+                    </div>
+                    <div class="cardIndividual" id="num">
+                        <div id="numTitulo"><h3>Galpão com mais alerta</h3>
+                        <h5>Últimos sete dias</h5></div>
+                        <h3 id="medida1" class="textoVermelho">2</h3>
+                        <h5 id="sensor1">Sensor 1</h5>
+                        <h5 id="tipo1">Umidade</h5>
+                        <h3 id="medida2" class="textoVermelho">6</h3>
+                        <h5 id="sensor2">Sensor 4</h5>
+                        <h5 id="tipo2">Temperatura</h5>
+                    </div>
+</body>
+</html>
+<script>
+            var opcoesGrafico = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { display: false },
+                    },
+                    x: {
+                        grid: { display: false }
+                    }
+                },
+                elements: {
+                    line: {
+                        borderColor: '#d9363e',
+                        borderWidth: 3,
+                        tension: 0.4,
+                        fill: false
+                    },
+                    point: {
+                        backgroundColor: '#d9363e',
+                        radius: 4,
+                        hoverRadius: 6
+                    }
+                }
+            };
+
+            const ctxSensor1 = document.getElementById('chart1').getContext('2d');
+            new Chart(ctxSensor1, {
+                type: 'line',
+                data: {
+                    labels: ['12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00', '13:10', '13:20', '13:30', '13:40', '13:50'],
+                    datasets: [{
+                        label: 'Temperatura',
+                        data: [18, 15, 17, 25, 31, 29, 18, 20, 20, 21, 23, 15],
+                    },
+                    {
+                        label: 'Umidade',
+                        data: [50, 40, 70, 30, 40, 60, 70, 90, 50, 40, 30, 60],
+                    }]
+                },
+                options: opcoesGrafico
+            });
+
+            const ctxSensor2 = document.getElementById('chart2').getContext('2d');
+            new Chart(ctxSensor2, {
+                type: 'line',
+                data: {
+                    labels: ['12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00', '13:10', '13:20', '13:30', '13:40', '13:50'],
+                    datasets: [{
+                        label: 'Temperatura',
+                        data: [18, 15, 17, 25, 31, 29, 18, 20, 20, 21, 23, 15],
+                    },
+                    {
+                        label: 'Umidade',
+                        data: [50, 40, 70, 30, 40, 60, 70, 90, 50, 40, 30, 60],
+                    }]
+                },
+                options: opcoesGrafico
+            });
+</script>

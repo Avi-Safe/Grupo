@@ -1,0 +1,424 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f3f3f3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estrutura principal */
+.container {
+    display: flex;
+    width: 95vw;
+    height: 95vh;
+    margin-top: 1%;
+    background: #fff;
+    border-radius: 3vh;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
+}
+
+/* Lateral */
+.menuLateral {
+    width: 15%;
+    background-color: #b50000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2% 0;
+    gap: 3%;
+}
+
+.containerLogo {
+    width: 70%;
+    height: 30%;
+    background-color: #f3f3f3;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerLogo img {
+    width: 70%;
+    height: 80%;
+}
+
+.mensagemBoasvindas {
+    color: #fff;
+    font-size: 1vw;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav {
+    width: 100%;
+    flex: 1;
+}
+
+ul {
+    list-style: none;
+    margin-top: 10%;
+    padding: 0;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5%;
+    align-items: center;
+}
+
+li{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1vw;
+    padding: 0.5vw 1vw;
+    border-radius: 1vh;
+    transition: 0.3s;
+}
+
+ul li a.ativo,
+ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.popupAlerta {
+    width: 1.5vw;
+    background-color: white;
+    border-radius: 100%;
+    text-align: center;
+    color: red;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+/* Corpo principal */
+.containerLanding {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2%;
+    padding: 2%;
+    border-radius: 0 3vh 3vh 0;
+    background-color: #fff;
+}
+
+/* Resumo */
+.containerResumo {
+    display: flex;
+    flex-direction: column;
+    gap: 2%;
+}
+
+.containerResumo .titulo {
+    height: 25%;
+    background-color: #b50000;
+    border-radius: 2vh;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.containerResumo .alertasResumo {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1%;
+}
+
+.alerta {
+    border-radius: 2vh;
+    color: #fff;
+    background-color: #e1e1e1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.verde { background-color: #19a519; }
+.textoVerde {color:  #19a519;}
+.laranja { background-color: #f3b20f; }
+.textoLaranja {color:  #f3b20f;}
+.vermelho { background-color: #e01212; }
+.textoVermelho {color:  #e01212;}
+
+/* Gráfico */
+.containerGrafico {
+    background-color: #fff;
+    border-radius: 2vh;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.containerGraficoBaixo {
+    background-color: #fff;
+    border-radius: 2vh;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.containerGrafico canvas {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    font-size: 1vh;
+
+}
+
+/* Títulos */
+h1 { margin: 0; font-size: 2.5vw; }
+h3 { margin: 0; font-size: 1.4vw; }
+h5 { margin: 0; font-size: 1vw; }
+
+/* Dashboard Galpão */
+.containerGalpao {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.alertasCima {
+    height: 25%;
+    margin: 2%;
+    display: flex;
+}
+
+.alertasBaixo {
+    flex: 1;
+    display: flex;
+    margin-bottom: 2%;
+    margin-right: 2%;
+}
+
+.baixoEsquerda {
+    width: 65%;
+    margin:0 0 0 2%;
+    gap: 2%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.baixoDireita {
+    color: white;
+    grid-area: alertas;
+    width: 15vw;
+    text-align: center;
+    border-radius: 0 2vh 2vh 0;
+    background-color: #b50000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.historicoAlertas {
+    grid-area: alertas;
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 95%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1% 0;
+    padding: 2%;
+    overflow-y: auto
+}
+
+.alertaNotif {
+    color: black;
+    background-color: #e01212;
+    text-align: center;
+    border-radius: 2vh;
+    width: 90%;
+    height: 20vh;
+    min-height: 10vh;
+    background-color: #f3f3f3;
+    display: flex;
+    flex-direction: column;
+}
+
+.containerIndividual {
+    flex: 1;
+    display: grid;
+    grid-template-areas: 
+    "temp umi medidas alertas"
+    "rank grafico1 grafico1 alertas"
+    "num grafico2 grafico2 alertas";
+    gap: 2%;
+    padding: 2% 0 2% 2%;
+    border-radius: 0 3vh 3vh 0;
+    background-color: #fff;
+}
+
+#temp {
+    grid-area: temp;
+}
+
+#umi {
+    grid-area: umi;
+}
+
+#grafico1 {
+    grid-area: grafico1;
+}
+
+#grafico2 {
+    grid-area: grafico2;
+}
+
+#rank {
+    grid-area: rank;
+    background-color: #f3b20f;
+    display: grid;
+    grid-template-areas: 
+    'titulo titulo'
+    'horario1 horario1'
+    'horario2 horario3';
+    color: white;
+    padding: 5%;
+}
+
+#ranktitulo {
+    
+    grid-area: titulo;
+}
+
+#ranktitulo h5{
+    font-weight: 300;
+}
+
+#horario1 {
+    font-size: 5vh;
+    grid-area: horario1;
+}
+#horario2 {
+    font-size: 3vh;
+    grid-area: horario2;
+}
+#horario3 {
+    font-size: 3vh;
+    grid-area: horario3;
+}
+
+#num {
+    background-color: #f3b20f;
+    display: grid;
+    grid-template-areas: 
+    'titulo titulo'
+    'sensor1 sensor2'
+    'medida1 medida2'
+    'tipo1 tipo2';
+    color: white;
+    padding: 5%;
+    grid-area: num;
+}
+
+#numTitulo {
+    grid-area: titulo;
+}
+
+#numTitulo h5 {
+    font-weight: 300;
+}
+
+#sensor1 { grid-area: sensor1;}
+#sensor2 { grid-area: sensor2;}
+#medida1 { 
+    grid-area: medida1;
+    font-size: 5vh;
+}
+#medida2 { 
+    grid-area: medida2;
+    font-size: 5vh;
+}
+#tipo1 { grid-area: tipo1;}
+#tipo2 { grid-area: tipo2;}
+.cardIndividual {
+    border-radius: 3vh;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1%;
+    padding: 0 1% 1% 1%;
+    flex: 1;
+}
+
+.cardIndividualBaixo {
+    border-radius: 3vh;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 70%;
+}
+.cardIndividual .info {
+    grid-area: medidas;
+}
+
+.intervalos {
+    margin: 0 0 0 4%;
+}
+/*
+.guia {
+    margin: 5% 0 0 4%;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+}
+
+.guiaIcon {
+    flex: 1;
+    font-weight: 700;
+    color: white;
+    border-radius: 1vh;
+}
+    */
+
+    /*Intervalo imagem */
+.intervalo {
+    width: 70%;
+    height: 80%;
+}
+
+.alertasIndividual{
+    border-radius: 2vh;
+    padding: 1%;
+    margin: 1%;
+    border: .2vh rgba(0, 0, 0, 0.173) solid;
+    background-color: rgba(0, 0, 0, 0.173);
+    flex: 1;
+    gap: 1%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.containerGalpao h1 {
+    font-size: 1.5vw;
+}
+.containerGalpao h3 {
+    font-size: 1vw;
+}
+
+.esq{
+    text-align: left;
+}
