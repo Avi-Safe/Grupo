@@ -34,7 +34,8 @@
                 <ul>
                     <li><a href="landing.html">Painel</a></li>
                     <li><a href="#" class="ativo">Galpão 1</a></li>
-                    <li><a href="galpao2.html">Galpão 2</a><div class="popupAlerta" title="Você possui alertas nesse grupo de sensores!">!</div>
+                    <li><a href="galpao2.html">Galpão 2</a>
+                        <div class="popupAlerta" title="Você possui alertas nesse grupo de sensores!">!</div>
                     </li>
                     <li><a href="../Site de Cadastro/cadastro.html">Cadastro</a></li>
                     <li><a id="logout-button" href="../Site Institucional/">Sair</a></li>
@@ -43,155 +44,117 @@
         </div>
 
         <div class="containerGalpao">
-            
-                <div class="containerIndividual">
-                    <div class="cardIndividual" id="temp">
-                        <h3>Temperatura atual:</h3>
-                        <div class="alertasIndividual">
-                            <div class="alerta verde">
-                                <h1>22° C</h1>
-                                <h3>Sensor A1</h3>
-                            </div>
-                            <div class="alerta verde">
-                                <h1>22° C</h1>
-                                <h3>Sensor A2</h3>
-                            </div>
-                            <div class="alerta verde">
-                                <h1>19° C</h1>
-                                <h3>Sensor A3</h3>
-                            </div>
-                            <div class="alerta verde">
-                                <h1>21° C</h1>
-                                <h3>Sensor A4</h3>
-                            </div>
+
+            <div class="containerIndividual">
+                <div class="cardIndividual" id="temp">
+                    <h3>Temperatura atual:</h3>
+                    <div class="alertasIndividual">
+                        <div class="alerta verde">
+                            <h1>22° C</h1>
+                            <h3>Sensor A1</h3>
+                        </div>
+                        <div class="alerta verde">
+                            <h1>22° C</h1>
+                            <h3>Sensor A2</h3>
+                        </div>
+                        <div class="alerta verde">
+                            <h1>19° C</h1>
+                            <h3>Sensor A3</h3>
+                        </div>
+                        <div class="alerta verde">
+                            <h1>21° C</h1>
+                            <h3>Sensor A4</h3>
                         </div>
                     </div>
-                    <div class="cardIndividual" id="umi">
-                        <h3>Umidade atual:</h3>
-                        <div class="alertasIndividual">
-                            <div class="alerta verde">
-                                <h1>60%</h1>
-                                <h3>Sensor A1</h3>
-                            </div>
-                            <div class="alerta verde">
-                                <h1>50%</h1>
-                                <h3>Sensor A2</h3>
-                            </div>
-                            <div class="alerta verde">
-                                <h1>57%</h1>
-                                <h3>Sensor A3</h3>
-                            </div>
-                            <div class="alerta verde">
-                                <h1>40%</h1>
-                                <h3>Sensor A4</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cardIndividual info">
-                        <div class="intervalos">
-                            <h3>Intervalos ideais</h3>
-                            <h3 class="esq">Umidade:</h3>
-                            <h1 class="textoVerde">40% - 60%</h1>
-                            <h3 class="esq">Temperatura:</h3>
-                            <h1 class="textoVerde">18°C - 22°C</h1>
-                            <h3 class="esq">Nivel de estresse:</h3>
-                        </div>
-                        <div class="guia">
-                            <img src="intervaloITURecortado.png" class="intervalo" >
-                                <!--
-                            <div class="guiaIcon vermelho">EXTREMO</div>
-                            <div class="guiaIcon laranja">AMENO</div>
-                            <div class="guiaIcon verde">BOM</div>-->
-                        </div>
-                    
-                    </div>
-                
-            
-            
-                
-                    <div class="cardIndividual" id="rank">
-                        <div id="ranktitulo"><h3>Horários com maior incidência de alertas</h3>
-                        <h5>Últimos sete dias</h5></div>
-                        <h3 id="horario1" class="textoVermelho">1°. 12:00</h3>
-                        <h5 id="horario2">2°. 04:30</h5>
-                        <h5 id="horario3">3°. XX:XX</h5>
-                    </div>
-                    <div class="containerGraficoBaixo" id="grafico1">
-                        <h3>Galpão 1 - Temperatura</h3>
-                        <div class="canvasGrafico">
-                            <canvas id="chart1"></canvas>
-                        </div>
-                    </div>
-                    <div class="cardIndividual" id="num">
-                        <div id="numTitulo"><h3>Sensores com maior número de alertas</h3>
-                        <h5>Últimos sete dias</h5></div>
-                        <h3 id="medida1" class="textoVermelho">1</h3>
-                        <h5 id="sensor1">Sensor 3</h5>
-                        <h5 id="tipo1">Umidade</h5>
-                        <h3 id="medida2" class="textoVermelho">1</h3>
-                        <h5 id="sensor2">Sensor 3</h5>
-                        <h5 id="tipo2">Temperatura</h5>
-                    </div>
-                    <div class="containerGraficoBaixo" id="grafico2">
-                        <h3>Galpão 1 - Umidade</h3>
-                        <div class="canvasGrafico">
-                            <canvas id="chart2"></canvas>
-                        </div>
-                    </div>
-                    
-                    
-                
                 </div>
-                
-            
+                <div class="cardIndividual" id="umi">
+                    <h3>Umidade atual:</h3>
+                    <div class="alertasIndividual">
+                        <div class="alerta verde">
+                            <h1>60%</h1>
+                            <h3>Sensor A1</h3>
+                        </div>
+                        <div class="alerta verde">
+                            <h1>50%</h1>
+                            <h3>Sensor A2</h3>
+                        </div>
+                        <div class="alerta verde">
+                            <h1>57%</h1>
+                            <h3>Sensor A3</h3>
+                        </div>
+                        <div class="alerta verde">
+                            <h1>40%</h1>
+                            <h3>Sensor A4</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="cardIndividual info">
+                    <div class="intervalos">
+                        <h3>Intervalos ideais</h3>
+                        <h3 class="esq">Umidade:</h3>
+                        <h1 class="textoVerde">40% - 60%</h1>
+                        <h3 class="esq">Temperatura:</h3>
+                        <h1 class="textoVerde">18°C - 22°C</h1>
+                        <h3 class="esq">Nivel de estresse:</h3>
+                    </div>
+                    <img src="legenda.jpeg" class="intervalo">
+                    <div class="guia">
+                        <div class="guiaIcon verde">BOM</div>
+                        <div class="guiaIcon laranja">AMENO</div>
+                        <div class="guiaIcon vermelho">EXTREMO</div>                       
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="cardIndividual" id="rank">
+                    <div id="ranktitulo">
+                        <h3>Horários com maior incidência de alertas</h3>
+                        <h5>Últimos sete dias</h5>
+                    </div>
+                    <h3 id="horario1" class="textoVermelho">1°. 12:00</h3>
+                    <h5 id="horario2">2°. 04:30</h5>
+                    <h5 id="horario3">3°. XX:XX</h5>
+                </div>
+                <div class="containerGraficoBaixo" id="grafico1">
+                    <h3>Galpão 1 - Temperatura</h3>
+                    <div class="canvasGrafico">
+                        <canvas id="chart1"></canvas>
+                    </div>
+                </div>
+                <div class="cardIndividual" id="num">
+                    <div id="numTitulo">
+                        <h3>Sensores com maior número de alertas</h3>
+                        <h5>Últimos sete dias</h5>
+                    </div>
+                    <h3 id="medida1" class="textoVermelho">1</h3>
+                    <h5 id="sensor1">Sensor 3</h5>
+                    <h5 id="tipo1">Umidade</h5>
+                    <h3 id="medida2" class="textoVermelho">1</h3>
+                    <h5 id="sensor2">Sensor 3</h5>
+                    <h5 id="tipo2">Temperatura</h5>
+                </div>
+                <div class="containerGraficoBaixo" id="grafico2">
+                    <h3>Galpão 1 - Umidade</h3>
+                    <div class="canvasGrafico">
+                        <canvas id="chart2"></canvas>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
 
         </div>
         <div class="baixoDireita" id="baixoDireita">
             <h5>Histórico de Alertas</h5>
-                        <div class="historicoAlertas">
-                            
-                            <div class="alertaNotif">
-                                <span class="textoVermelho">Alerta: Temperatura acima!</span>
-                                14:00 -Sensor 1
-                            </div>
-                            <div class="alertaNotif">
-                                <span class="textoVermelho">Alerta: Temperatura acima!</span>
-                                14:00 -Sensor 1
-                            </div>
-                            <div class="alertaNotif">
-                                <span class="textoVermelho">Alerta: Temperatura acima!</span>
-                                14:00 -Sensor 1
-                            </div>
-                            <div class="alertaNotif">
-                                <span class="textoVermelho">Alerta: Temperatura acima!</span>
-                                14:00 -Sensor 1
-                            </div>
-                            <div class="alertaNotif">
-                                <span class="textoVermelho">Alerta: Temperatura acima!</span>
-                                14:00 -Sensor 1
-                            </div>
-                            <div class="alertaNotif">
-                                <span class="textoVermelho">Alerta: Temperatura acima!</span>
-                                14:00 -Sensor 1
-                            </div>
-                            <div class="alertaNotif">
-                                <span class="textoVermelho">Alerta: Temperatura acima!</span>
-                                14:00 -Sensor 1
-                            </div>
-                            <div class="alertaNotif">
-                                <span class="textoVermelho">Alerta: Temperatura acima!</span>
-                                14:00 -Sensor 1
-                            </div>
-                            <div class="alertaNotif">
-                                <span class="textoVermelho">Alerta: Temperatura acima!</span>
-                                14:00 -Sensor 1
-                            </div>
-                            <div class="alertaNotif">
-                                <span class="textoVermelho">Alerta: Temperatura acima!</span>
-                                14:00 -Sensor 1
-                            </div>
-                        </div>
-                    </div>
+            <div class="historicoAlertas">
+            </div>
+        </div>
     </div>
 
 </body>
@@ -201,61 +164,88 @@
 
     baixoDireita.style.display = 'none';
 
-    var opcoesGrafico = {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: {
-                display: false
-            }
-        },
-        scales: {
-            y: {
-                beginAtZero: true,
-                grid: { display: false },
-            },
-            x: {
-                grid: { display: false }
-            }
-        },
-        elements: {
-            line: {
-                borderColor: '#d9363e',
-                borderWidth: 3,
-                tension: 0.4,
-                fill: false
-            },
-            point: {
-                backgroundColor: '#d9363e',
-                radius: 4,
-                hoverRadius: 6
-            }
-        }
-    };
-
     const ctxSensor1 = document.getElementById('chart1').getContext('2d');
     new Chart(ctxSensor1, {
-        type: 'line',
+        type: 'bar',
         data: {
             labels: ['12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00', '13:10', '13:20', '13:30', '13:40', '13:50'],
             datasets: [{
                 label: 'Sensor 1',
                 data: [20, 22, 21, 20, 24, 25, 20, 20, 21, 22, 24, 22],
+                borderColor: '#CC0003',
+                backgroundColor: '#CC0003',
             },
             {
                 label: 'Sensor 2',
                 data: [26, 28, 22, 20, 26, 27, 25, 23, 22, 22, 24, 22],
+                borderColor: '#69CC00',
+                backgroundColor: '#69CC00',
             },
             {
                 label: 'Sensor 3',
                 data: [21, 25, 25, 26, 21, 22, 22, 26, 28, 20, 18, 19],
+                borderColor: '#00CCC9',
+                backgroundColor: '#00CCC9',
             },
             {
                 label: 'Sensor 4',
                 data: [23, 30, 30, 28, 21, 24, 23, 21, 18, 17, 19, 21],
+                borderColor: '#6300CC',
+                backgroundColor: '#6300CC',
             }]
         },
-        options: opcoesGrafico
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true
+                }
+            },
+            scales: {
+                y: {
+                    min: 10,
+                    max: 35,
+                    ticks: {
+                        stepSize: 5
+                    },
+                    beginAtZero: false,
+                    grid: { 
+                        display: true ,
+                        color: (context) => {
+                            if (context.tick.value === 0) return 'red';
+                            if (context.tick.value === 15) return 'orange';
+                            if (context.tick.value === 25) return 'orange';
+                            if (context.tick.value === 30) return 'red';
+                            return 'rgba(200,200,200,0.5)'
+                        },
+                        lineWidth: (context) => {
+                            if (context.tick.value === 15) return 2;
+                            if (context.tick.value === 25) return 2;
+                            if (context.tick.value === 30) return 2;
+                            return 1;
+                        }
+                    },
+                    
+                },
+                x: {
+                    grid: { display: true, lineWidth: 3}
+                }
+            },
+            elements: {
+                line: {
+                    borderColor: '#d9363e',
+                    borderWidth: 3,
+                    tension: 0.4,
+                    fill: false
+                },
+                point: {
+                    backgroundColor: '#d9363e',
+                    radius: 4,
+                    hoverRadius: 6
+                }
+            }
+        }
     });
 
     const ctxSensor2 = document.getElementById('chart2').getContext('2d');
@@ -266,20 +256,78 @@
             datasets: [{
                 label: 'Sensor 1',
                 data: [46, 49, 39, 46, 50, 55, 46, 46, 39, 49, 50, 60],
+                borderColor: '#CC0003',
+                backgroundColor: '#CC0003',
             },
             {
                 label: 'Sensor 2',
                 data: [33, 28, 49, 46, 33, 47, 55, 60, 49, 49, 50, 50],
+                borderColor: '#69CC00',
+                backgroundColor: '#69CC00',
             },
             {
                 label: 'Sensor 3',
                 data: [39, 55, 55, 33, 39, 49, 49, 30, 28, 46, 44, 57],
+                borderColor: '#00CCC9',
+                backgroundColor: '#00CCC9',
             },
             {
                 label: 'Sensor 4',
                 data: [60, 30, 30, 28, 39, 50, 60, 39, 46, 58, 60, 40],
+                borderColor: '#6300CC',
+                backgroundColor: '#6300CC',
             }]
         },
-        options: opcoesGrafico
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true
+                }
+            },
+            scales: {
+                y: {
+                    min: 0,
+                    max: 80,
+                    ticks: {
+                        stepSize: 5
+                    },
+                    beginAtZero: false,
+                    grid: { 
+                        display: true ,
+                        color: (context) => {
+                            if (context.tick.value === 30) return 'red';
+                            if (context.tick.value === 60) return 'orange';
+                            if (context.tick.value === 75) return 'red';
+                            return 'rgba(200,200,200,0.5)'
+                        },
+                        lineWidth: (context) => {
+                            if (context.tick.value === 30) return 4;
+                            if (context.tick.value === 60) return 4;
+                            if (context.tick.value === 75) return 4;
+                            return 1;
+                        }
+                    },
+                    
+                },
+                x: {
+                    grid: { display: true }
+                }
+            },
+            elements: {
+                line: {
+                    borderColor: '#d9363e',
+                    borderWidth: 3,
+                    tension: 0.4,
+                    fill: false
+                },
+                point: {
+                    backgroundColor: '#d9363e',
+                    radius: 4,
+                    hoverRadius: 6
+                }
+            }
+        }
     });
 </script>

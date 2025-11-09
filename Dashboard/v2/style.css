@@ -114,6 +114,7 @@ ul li a:hover {
     padding: 2%;
     border-radius: 0 3vh 3vh 0;
     background-color: #fff;
+    min-height: 0;
 }
 
 /* Resumo */
@@ -160,6 +161,7 @@ ul li a:hover {
 
 /* Gráfico */
 .containerGrafico {
+    height: 100%;
     background-color: #fff;
     border-radius: 2vh;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
@@ -167,10 +169,20 @@ ul li a:hover {
 }
 
 .containerGraficoBaixo {
+    height: 100%;
     background-color: #fff;
     border-radius: 2vh;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
     text-align: center;
+}
+
+
+.canvasGrafico {
+    width: 100%;
+}
+
+.graficoLanding {
+    height: 100%;
 }
 
 .containerGrafico canvas {
@@ -188,6 +200,8 @@ h5 { margin: 0; font-size: 1vw; }
 
 /* Dashboard Galpão */
 .containerGalpao {
+    min-height: 0;
+    padding: 0 0 20% 0;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -235,7 +249,7 @@ h5 { margin: 0; font-size: 1vw; }
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 1% 0;
     padding: 2%;
     overflow-y: auto
@@ -248,6 +262,7 @@ h5 { margin: 0; font-size: 1vw; }
     border-radius: 2vh;
     width: 90%;
     height: 20vh;
+    font-size: 2vh;
     min-height: 10vh;
     background-color: #f3f3f3;
     display: flex;
@@ -256,13 +271,14 @@ h5 { margin: 0; font-size: 1vw; }
 
 .containerIndividual {
     flex: 1;
+    min-height: 0;
     display: grid;
     grid-template-areas: 
     "temp umi medidas alertas"
     "rank grafico1 grafico1 alertas"
     "num grafico2 grafico2 alertas";
     gap: 2%;
-    padding: 2% 0 2% 2%;
+    margin: 2% 2% 2% 2%;
     border-radius: 0 3vh 3vh 0;
     background-color: #fff;
 }
@@ -350,6 +366,17 @@ h5 { margin: 0; font-size: 1vw; }
 }
 #tipo1 { grid-area: tipo1;}
 #tipo2 { grid-area: tipo2;}
+
+#legenda {
+    width: 100%;
+    height: 80%;
+}
+#legendaGalpao {
+    width: 50%;
+    height: 100%;
+}
+
+
 .cardIndividual {
     border-radius: 3vh;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
@@ -357,8 +384,71 @@ h5 { margin: 0; font-size: 1vw; }
     flex-direction: column;
     text-align: center;
     gap: 1%;
-    padding: 0 1% 1% 1%;
+    padding: 1% 1% 1% 1%;
     flex: 1;
+}
+
+.kpisLand {
+    margin-top: 1%;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0);
+    display: flex;
+    flex-direction: column;
+    max-height: 40%;
+    max-width: 21%;
+    gap: 1%;
+}
+
+.conteudoLanding{
+    flex: 1;
+    border-radius: 3vh;
+    box-shadow: 5px 0 12px rgba(0, 0, 0, 0.258);
+    margin: 1%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    display: flex;
+    flex-direction: column;
+    height: 96%;
+}
+
+.containerGraficoLanding {
+    flex: 1;
+    margin: 1%;
+    display: flex;
+    align-items: center;
+}
+
+#media {
+    display: flex;
+    gap: 2%;
+    flex-direction: column;
+}
+
+#containerGeral {
+    height: auto;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+#geral{
+    min-height: 0;
+    width: 98%;
+    height: 100%;
+    margin: 2%;
+    display: grid;
+    gap: 1%;
+    grid-template-columns: repeat(4,1fr);
+    overflow-y: auto;
+}
+
+#listaGalpoes {
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0);
+    margin: 1% 0;
+    display: flex;
+    max-width: 25%;
+    flex-direction: column;
+    overflow-y: auto;
 }
 
 .cardIndividualBaixo {
@@ -371,12 +461,16 @@ h5 { margin: 0; font-size: 1vw; }
 }
 .cardIndividual .info {
     grid-area: medidas;
+    width: 10px;
+}
+
+.info img {
+    margin-left: 10%;
 }
 
 .intervalos {
     margin: 0 0 0 4%;
 }
-/*
 .guia {
     margin: 5% 0 0 4%;
     width: 90%;
@@ -392,12 +486,12 @@ h5 { margin: 0; font-size: 1vw; }
     color: white;
     border-radius: 1vh;
 }
-    */
+
 
     /*Intervalo imagem */
 .intervalo {
-    width: 70%;
-    height: 80%;
+    width: 80%;
+    height: 6vh;
 }
 
 .alertasIndividual{
