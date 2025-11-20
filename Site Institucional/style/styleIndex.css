@@ -1,0 +1,532 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+html{
+    scroll-behavior: smooth;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: roboto, sans-serif;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    color: #ffffff;
+    text-decoration: none;
+    padding: 1em;
+}
+
+.navbar {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #A1A1A1;
+    width: 50%;
+    margin-right: 5%;
+    width: 850px;
+}
+
+.navbar a {
+    color: #A1A1A1;
+    text-decoration: none;
+    font-style: Poppins;
+}
+
+.navbar button {
+    color: #B50000;
+    background-color: #FFFFFF;
+    border: #B50000;
+    border: solid;
+    border-width: 1px;
+    border-radius: 1em;
+    padding: 8%;
+    width: 125px;
+}
+
+.navbar button:hover{
+    cursor: pointer;
+    background-color: #B50000;
+    transition: 0.2s ease-in-out;
+    color: #FFFFFF;
+}
+
+.navbar .btn-navbar:hover{
+    color: #B50000;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.header .container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.header .container img {
+    width: 13%;
+    margin-left: 5%;
+}
+
+.agora a {
+    font-weight: bold;
+    color: #000000;
+}
+
+.banner {
+    background-image: url(../assets/img/image-5.webp);
+    background-size: cover;
+    height: 51em;
+}
+
+.textoBanner {
+    width: 30%;
+    height: 60%;
+    background-color: rgba(255, 255, 255, 0.712);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 12% 2%;
+    border-radius: 2vh;
+    opacity: 100%;
+}
+
+.banner .container {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 10%;
+}
+
+.banner .container p {
+    font-weight: bold;
+    color: black;
+    width: 100%;
+    font-size: 2.5em;
+}
+
+.banner .container span {
+    color: #000000;
+    margin-top: 2em;
+    font-size: 1.1em;
+    width: 100%;
+    text-align: justify;
+    font-weight: 400;
+}
+
+.banner .container .textoGrifado {
+    background-color: #B50000;
+    color: white;
+}
+
+
+.box1 {
+    display: flex;
+    align-items: center;
+    margin: 2.5% 7% 0 0;
+}
+
+.box1 img {
+    width: 20%;
+    margin-left: 10%;
+    flex: 1;
+}
+
+.box1 #img_galinha {
+    margin-right: 20%;
+    border-radius: 1em;
+}
+
+.box1 p {
+    width: 75%;
+    flex: 1;
+    margin-right: 10%;
+    font-size: 1.3em;
+    text-align: justify;
+}
+
+.box2{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row-reverse;
+    background-color: #EFEFEF;
+    margin-top: 2.5%;
+}
+
+.box2 img {
+    width: 30%;
+    margin-left: 150px;
+    flex: 1;
+}
+
+#img_granja {
+    width: 50%;
+}
+
+.box2 p {
+    display: flex;
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10%;
+    
+    font-size: 1.3em;
+    text-align: justify;
+}
+
+.boxes-2{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.pilares{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 10% 0 10%;
+    color: #ffffff;
+}
+
+.pilares .box{
+    width: 18%;
+    height: 14em;
+    border-radius: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.pilares .box .negrito{
+    margin-top: 2em;
+    font-weight: bold;
+}
+
+.pilares .box .numeroMaior{
+    font-size: 2em;
+    background-color: #FF0000;
+    color: white;
+}
+
+.pilares .box .textoMaior{
+    font-size: 1.5em;
+}
+
+.caixa1, .caixa3{
+    position: relative;
+    background-color: #B50000;
+}
+
+.caixa2{
+    position: relative;
+}
+
+.caixa2 .elementos{
+    color: #000000;
+    position: absolute;
+    top: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    font-weight: 900;
+}
+
+.caixa2 #img_suporte{
+    width: 100%;
+    height: 100%;
+    border-radius: 1em;
+    filter: brightness(.5);
+}
+
+.caixa4{
+    position: relative;
+}
+
+.caixa4 .elementos{
+    color: #000000;
+    position: absolute;
+    top: 25%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.caixa4 #img_seguranca{
+    width: 100%;
+    height: 100%;
+}
+
+.pilares .elementos{
+    color: #ffffff;
+    margin-left: 5%;
+}
+
+.info{
+    background-color: #EFEFEF;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.simulador{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #B50000;
+    width: 70%;
+    padding: 2em;
+    margin: 3% 0 3%;
+    border-radius: 3em;
+}
+
+.simulador img {
+    width: 40%;
+}
+
+.conteudo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.conteudo p {
+    text-align: justify;
+}
+
+.info .nos{
+    width: 100%;
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.info .nos p{
+    width: 100%;
+    margin-top: 2em;
+    width: 70%;
+    line-height: 2em;
+    text-align: justify;
+}
+
+.info .nos h2{
+    font-size: 2.2em;
+}
+
+.conteudo-items{
+    width: 50%;
+}
+
+.conteudo-items p{
+    width: 100%;
+    font-size: 1.2em;
+    font-weight: 300;
+    line-height: 1.5em;
+    margin: 10% 0 5%;
+}
+
+.conteudo-items h4{
+    font-size: 2em;
+}
+
+.conteudo-items button{
+    padding: 1em;
+    border-radius: 1.2em;
+    width: 12em;
+    border: none;
+    font-weight: 700;
+    font-size: 1.1em;
+}
+
+.conteudo-items button{
+    cursor: pointer;
+}
+
+.conteudo-items button:hover{
+    background-color: #A1A1A1;
+    transition: 0.2s ease-in-out;
+}
+
+.cabecalho .primeira-img{
+    width: 100%;
+}
+
+.mensagem{
+    position: relative;
+    background: none;
+}
+
+.mensagem .container{
+    margin-bottom: 2.5%;
+    background-color: white;
+    border-radius: 2.5em 2.5em 0 0;
+    margin-top: -8em;
+    position: relative;
+}
+
+.mensagem .container .imagem #img_contato{
+    width: 35%;
+    margin: 2.5% 5% 0;
+    border-radius: 1em;
+}
+
+.imagem{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50%;
+}
+
+.duvida{
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+    margin-top: 3%;
+}
+
+.duvida .email{
+    margin-right: 70%;
+}
+
+.duvida h5{
+    font-size: 1.8em;
+    text-align: center;
+    width: 80%;
+}
+
+.logo-mensagem{
+    width: 10%;
+    position: absolute;
+    bottom: 21em;
+    left: 6em;
+}
+
+#input_mensagem{
+    height: 13em;
+}
+
+#input_email, #input_mensagem{
+    background-color: #EDEDED;
+    padding: 1em;
+    width: 80%;
+    border: none;
+    border-radius: 1em;
+}
+
+#input_email:focus, #input_mensagem:focus{
+    border: 1px solid #a89595;
+    outline: none;
+}
+
+#input_email::placeholder, #input_mensagem::placeholder{
+    font-size: 1.2em;
+}
+
+.duvida b{
+    margin-right: 65%;
+}
+
+.enviar{
+    background-color: #B50000;
+    width: 30%;
+    padding: 1em;
+    border-radius: 1em;
+    border: none;
+    color: #FFFFFF;
+    font-size: 1em;
+    font-weight: 900;
+    margin-left: 25%;
+}
+
+.enviar:hover{
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    box-shadow: 1px 1px 5px #a89595;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 20%;
+    background-color: #B50000;;
+    color: #ffffff;
+}
+
+.footer .container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+#img_face, #img_email, #img_insta{
+    width: 4em;
+}
+
+.fa-brands, .fa-solid{
+    padding: 1em;
+    color: #ffffff;
+}
+
+.fa-brands:hover, .fa-solid:hover {
+    cursor: pointer;
+    color: #000000;
+}
+
+#img_logo{
+    width: 60%;
+    margin-top: 4em;
+}
+
+.footer-logo{
+    width: 20%;
+    display: flex;
+    justify-content: end;
+    margin-left: 35%;
+}
+
+.icons{
+    position: relative;
+    font-size: 1.3em;
+    width: 10em;
+}
+
+.lista{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 18em;
+}   
+
+.lista a:hover{
+    color: #A1A1A1;
+    transition: 0.3s ease-in-out;
+}
+
+.mini-container{
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.simulador-cor-texto{
+    color: #000000;
+}

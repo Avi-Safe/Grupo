@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avi Safe | Página Inicial</title>
+    <link rel="stylesheet" href="./css/styleIndex.css">
+    <link rel="icon" href="./assets/icon/logogalinha.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+</head>
+
+<body>
+    <div class="header" id="casa">
+        <div class="container">
+            <img id="logo" src="./assets/icon/Logo.png"> 
+                <ul class="navbar">
+                    <li class="agora">
+                        <a href="#casa">Home</a>
+                    </li>
+                    <li>
+                        <a class="btn-navbar" href="#sobre-nos">Sobre nós</a>
+                    </li>
+                    <li>
+                        <a class="btn-navbar" href="#contato-AviSafe">Contato</a>
+                    </li>
+                    <li>
+                        <a class="btn-navbar" href="#simulador-financeiro">Simulador financeiro</a>
+                    </li>
+                    <li>
+                        <button onclick="login()"><a href="./login.html"> Login </a></button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="banner">
+        <div class="container">
+            <div class="textoBanner">
+                <p><span class="textoGrifado">Monitore</span> o ambiente da sua granja e veja o <span class="textoGrifado">resultado em sua produção.</span></p>
+
+                <span>
+                    Com a AviSafe, você acompanha em tempo real a temperatura e umidade do seu aviário, para o bem-estar animal e eficiência na produção. 
+                    Nosso sistema inteligente ajuda você a identificar riscos, reduzir perdas e aumentar a produtividade.
+                </span>
+            </div> 
+        </div>
+    </div>
+    <div class="social">
+        <div class="container">
+            <div class="boxes">
+                <div class="box1">
+                    <img id="img_galinha" src="./assets/imgs/galinhas-poedeiras.jpg">
+                    <p>
+                        A avicultura brasileira é uma das mais fortes do mundo e depende de ambientes bem controlados para garantir alta produtividade.
+                        Fatores como temperatura e umidade influenciam diretamente o bem-estar das galinhas e a qualidade dos ovos produzidos.
+                        A AviSafe foi criado para monitorar essas condições em tempo real.
+                    </p>
+                </div>
+                <div class="box2">
+                    <img id="img_granja" src="./assets/imgs/granja.jpg">
+                    <p>
+                        Utilizamos sensores que coletam dados do ambiente e enviam para uma plataforma digital intuitiva e segura.
+                        Com essas informações, o produtor consegue agir rapidamente diante de variações climáticas, prevenindo perdas por estresse térmico.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="pilares">
+            <div class="boxes-2">
+                <div class="caixa1 box">
+                    <div class="elementos">
+                        <h4> <span class="numeroMaior"> 25% </span></h4>
+                        <p class="negrito">Reduzir perdas:</p>
+                        <p>
+                            Podendo reduzir em até 25% as perdas produtivas relacionadas à temperatura e à umidade inadequadas.
+                        </p>
+                    </div>
+                </div>
+                <div class="caixa2 box">
+                    <img id="img_suporte" src="./assets/imgs/poedeiras-na-granja-main.webp">
+                    <div class="elementos">
+                        <h4 class="title"> <span class="textoMaior"> Métricas indicadas: </span></h4>
+                        <p>
+                            <b>Temperatura:</b> Entre 18°C a 22°C. <br><br>
+                            <b>Umidade:</b> Entre 40% e 60%. 
+                        </p>
+                    </div>
+                </div>
+                <div class="caixa3 box">
+                    <div class="elementos">
+                        <h4> <span class="numeroMaior"> 100% </span></h4>
+                        <p class="negrito">De cobertura</p>
+                        <p>
+                            Acompanhe todas as áreas do aviário com dados atualizados em tempo real.
+                        </p>
+                    </div>
+                </div>
+                <div class="caixa4 box">
+                    <img id="img_seguranca" src="./assets/icon/segurança.jpg" >
+                    <div class="elementos">
+                        <h4> <span class="textoMaior"> Segurança total </span></h4>
+                        <p>
+                            Suas informações ficam protegidas em um ambiente seguro e<br>confiável.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info" id="sobre-nos">
+            <div class="nos">
+                <h2>Sobre nós</h2>
+                <p id="simulador-financeiro">
+                    A AviSafe foi criada para unir tecnologia e inovação na avicultura.
+                    Desenvolvemos um sistema de monitoramento de temperatura e umidade para granjas poedeiras,
+                    que fornecem dados do clima e ajudam na tomada de decisão para evitar os efeitos do estresse térmico nas aves.
+                    Nosso objetivo é melhorar o bem-estar animal, a eficiência operacional e a rentabilidade da produção.
+                </p>
+            </div>
+            <div class="simulador">
+                <!-- <img id="img_backgroud" src="assets/imgs/fundo_simule.jpg"> -->
+                <div class="conteudo"> 
+                    <img id="png" src="./assets/icon/image-removebg-preview 1.png">
+                    <div class="conteudo-items">
+                        <h4>Simulador Financeiro</h4>
+                        <p>
+                            O simulador financeiro AviSafe mostra o impacto do estresse térmico nas perdas de produção, 
+                            o simulador ajuda o produtor a entender como a variação climática afeta o rendimento e quanto pode ser economizado com o uso do sistema.
+                        </p>
+                        <button onclick="simule()"><a class="simulador-cor-texto" href="../Calculadora Financeira/calculadora.html">Simule já!</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mensagem">
+        <div class="cabecalho">
+            <img class="primeira-img" src="./assets/icon/image 9.jpg">
+            <div class="container" id="contato-AviSafe">
+                <div class="imagem">
+                    <img id="img_contato" src="./assets/imgs/258902-veja-como-melhorar-o-manejo-de-galinhas-poedeiras-em-sua-fazenda.jpg">
+                    <img class="logo-mensagem" src="./assets/icon/Logo.png">
+                    <div class="duvida">
+                        <h5>Entre em contato conosco para orçamentos e dúvidas</h5>
+                        <b class="email">Email</b>
+                        <input type="text" id="input_email" placeholder="Seu melhor email vai aqui!">
+                        <b>Mensagem</b>
+                        <textarea id="input_mensagem" placeholder="Fale um pouco sobre o que deseja...  (Min. 20 caracteres)"></textarea>
+                        <button class="enviar" onclick="enviar()">Enviar</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="mini-container">
+                <div class="icons">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-solid fa-envelope"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+                <div class="direitos">
+                    <p>Todos os direitos reservados</p>
+                </div>
+            </div>
+                <div class="lista">
+                    <li>
+                        <a href="#casa">Home</a>
+                    </li>
+                    <li>
+                        <a href="#sobre-nos">Sobre nós</a>
+                    </li>
+                    <li>
+                        <a href="#contato-AviSafe">Contato</a>
+                    </li>
+                    <li>
+                        <a href="#simulador-financeiro">Simulador financeiro</a>
+                    </li>
+                    <div class="footer-logo">
+                        <img id="img_logo" src="./assets/imgs/Logo-removebg-preview.png" alt="">
+                    </div>
+                </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+   function enviar() {
+        var emailBorda = input_email;
+        var emailUser = input_email.value;
+
+        var mensagemBorda = input_mensagem;
+        var mensagemUser = input_mensagem.value;
+
+        if(emailUser.includes('@') && emailUser.includes('.com') || emailUser.includes('@') && emailUser.includes('sptech.school')){
+            emailBorda.style.border = '2px solid green';
+            emailBorda.value = '';
+            emailBorda.placeholder = `Aguarde o retorno em seu e-mail`;
+        }else{
+            emailBorda.style.border = '2px solid red';
+            emailBorda.placeholder = 'E-mail inválido!';
+            emailBorda.value = '';
+        }
+
+        if(mensagemUser.length < 20){
+            mensagemBorda.style.border = '2px solid red';
+            mensagemBorda.placeholder = `Mensagem muito curta!`;
+            mensagemBorda.value = '';        
+        }else{
+            mensagemBorda.style.border = '2px solid green';
+            mensagemBorda.value = '';
+            mensagemBorda.placeholder = `Mensagem enviada com sucesso!`;
+        }
+   }
+</script>
