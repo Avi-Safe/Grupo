@@ -87,10 +87,13 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.PERMISSAO = json.permissao;
                     //sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                         alert(`Login realizado! Bom te ver de novo, ${sessionStorage.NOME_USUARIO}`)
-                        window.location = "./index.html";
+                        if (json.permissao == 3) window.location = "./suporte.html"
+                        else window.location = "./index.html";
+                        
                      // apenas para exibir o loading
 
                 });
