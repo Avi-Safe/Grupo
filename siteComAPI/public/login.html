@@ -56,8 +56,7 @@
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
             finalizarAguardar();
             return false;
-        }
-        else {
+        } else {
             setInterval(sumirMensagem, 5000)
         }
 
@@ -91,9 +90,9 @@
                     sessionStorage.PERMISSAO = json.permissao;
                     //sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
-                        alert(`Login realizado! Bom te ver de novo, ${sessionStorage.NOME_USUARIO}`)
-                        window.location = "./index.html";
-                     // apenas para exibir o loading
+                    alert(`Login realizado! Bom te ver de novo, ${sessionStorage.NOME_USUARIO}`)
+                    window.location = "./dash/landing.html";
+                    // apenas para exibir o loading
 
                 });
 
