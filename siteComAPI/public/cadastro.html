@@ -1,23 +1,16 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>AquaTech | Cadastro</title>
-
-  <script src="./js/sessao.js"></script>
-
-  <link rel="stylesheet" href="./css/estilo.css" />
-  <link rel="icon" href="./assets/icon/favicon2.ico" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="./css/styleCadastro.css">
+    <link rel="icon" href="imgs/logogalinha.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back" />
 </head>
-
-<body onload="listar()">
+<body>
     <div class="direita">
-        <img src="imgs/RectangleTopo.svg" id="direita">
+        <img src="./assets/imgs/RectangleTopo.svg" id="direita">
         
         <div class="texto">
             <p class="titulo">Cadastre os usuários:</p>
@@ -26,6 +19,12 @@
             Ao final, clique em cadastrar para criar o usuário que terá acesso a Dashboard.</p>
         </div>
     </div>
+
+    <div class="alerta_erro">
+            <div class="card_erro" id="cardErro">
+                <span id="mensagem_erro"></span>
+            </div>
+        </div>
     
     <div class="container">
 
@@ -34,14 +33,14 @@
             <div class="campo_container">
                 <div class="responsavel_container">
                     <p>Nome do responsável</p>
-                    <input type="text" id="ipt_nomeResponsavel" placeholder="Informe o responsável" style="border: 1px solid black;">
+                    <input type="text" id="nome_input" placeholder="Informe o responsável" style="border: 1px solid black;">
                 </div>
             </div>
 
             <div class="campo_container">
                 <div class="email_container">
                     <p>Email</p>
-                    <input type="text" id="ipt_email" placeholder="Ex: AnaMatos@gmail.com" style="border: 1px solid black;">
+                    <input type="text" id="email_input" placeholder="Ex: AnaMatos@gmail.com" style="border: 1px solid black;">
                     <div class="msg" id="div_msgEmail" style="color: red;"></div>
                 </div>
             </div>
@@ -49,7 +48,7 @@
             <div class="campo_container">
                 <div class="telefone_container">
                     <p>Telefone</p>
-                    <input type="number" id="ipt_telefone" placeholder="Informe o telefone" style="border: 1px solid black;">
+                    <input type="number" id="tel_input" placeholder="Informe o telefone" style="border: 1px solid black;">
                     <div class="msg" id="div_msgTelefone" style="color: red;"></div>
                 </div>
             </div>
@@ -60,16 +59,16 @@
             <div class="campo_container">
                 <div class="senha_container">
                     <p>Senha</p>
-                    <input type="password" id="ipt_senha" placeholder="Informe a senha" style="border: 1px solid black;">
+                    <input type="password" id="senha_input" placeholder="Informe a senha" style="border: 1px solid black;">
                 </div>
             </div>
 
             <div class="campo_container">
                 <div class="confSenha_container">
                     <p>Repita a senha</p>
-                    <input type="password" id="ipt_confSenha" placeholder="Repita a senha" style="border: 1px solid black;">
+                    <input type="password" id="confirmacao_senha_input" placeholder="Repita a senha" style="border: 1px solid black;">
                     <div class="msg" id="div_msgSenha" style="color: red;"></div>
-                    <img id="olhoSenha" src="olhoFechado.svg" onclick="mostrarSenha()">
+                    <img id="olhoSenha" src="./assets/imgs/olhoAberto.svg" onclick="mostrarSenha()">
                 </div>
             </div>
 
@@ -90,17 +89,38 @@
     </a> 
 
     <div class="imgEsquerda">
-        <img src="imgs/RectangleBaixo.svg" id="esquerda">
+        <img src="./assets/imgs/RectangleBaixo.svg" id="esquerda">
     </div>      
     
 </body>
-
 </html>
-
 <script>
 
-  // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaEmpresasCadastradas = [];
+  function mostrarSenha() {
+        var senha1 = senha_input;
+        var senha2 = confirmacao_senha_input;
+        var olho = olhoSenha;
+
+        if (senha1.type == 'password') {
+            senha1.type = 'text';
+            senha2.type = 'text';
+            olho.src = './assets/imgs/olhoFechado.svg'
+        } else {
+            senha1.type = 'password';
+            senha2.type = 'password';
+            olho.src = './assets/imgs/olhoAberto.svg'
+        }
+    }
+
+  function limparFormulario() {
+    nome_input.value = '';
+    email_input.value = '';
+    senha_input.value = '';
+    tel_input.value = '';
+    confirmacao_senha_input.value = '';
+    
+  }
+
 
   function cadastrar() {
     // aguardar();
@@ -110,40 +130,40 @@
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
+    var telVar = tel_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var codigoVar = codigo_input.value;
-    var idEmpresaVincular
+    var idEmpresaVincular = sessionStorage.ID_EMPRESA;
 
     // Verificando se há algum campo em branco
     if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      codigoVar == ""
+      telVar == "" ||
+      confirmacaoSenhaVar == "" 
     ) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML =
         "(Mensagem de erro para todos os campos em branco)";
 
-      finalizarAguardar();
+      //finalizarAguardar();
       return false;
     } else {
       setInterval(sumirMensagem, 5000);
     }
 
     // Verificando se o código de ativação é de alguma empresa cadastrada
-    for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-      if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
-        idEmpresaVincular = listaEmpresasCadastradas[i].id
-        console.log("Código de ativação válido.");
-        break;
-      } else {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-        finalizarAguardar();
-      }
-    }
+    // for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
+    //   if (listaEmpresasCadastradas[i].codigo_ativacao == codigoVar) {
+    //     idEmpresaVincular = listaEmpresasCadastradas[i].id
+    //     console.log("Código de ativação válido.");
+    //     break;
+    //   } else {
+    //     cardErro.style.display = "block";
+    //     mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
+    //     finalizarAguardar();
+    //   }
+    // }
 
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
@@ -156,6 +176,7 @@
         // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
         emailServer: emailVar,
+        telServer: telVar,
         senhaServer: senhaVar,
         idEmpresaVincularServer: idEmpresaVincular
       }),
@@ -167,45 +188,45 @@
           cardErro.style.display = "block";
 
           mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+            "Cadastro realizado com sucesso!";
 
           setTimeout(() => {
-            window.location = "login.html";
+            //window.location = "login.html";
           }, "2000");
 
           limparFormulario();
-          finalizarAguardar();
+          //finalizarAguardar();
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";
         }
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
+        //finalizarAguardar();
       });
 
     return false;
   }
 
   // Listando empresas cadastradas 
-  function listar() {
-    fetch("/empresas/listar", {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((empresas) => {
-          empresas.forEach((empresa) => {
-            listaEmpresasCadastradas.push(empresa);
+  // function listar() {
+  //   fetch("/empresas/listar", {
+  //     method: "GET",
+  //   })
+  //     .then(function (resposta) {
+  //       resposta.json().then((empresas) => {
+  //         empresas.forEach((empresa) => {
+  //           listaEmpresasCadastradas.push(empresa);
 
-            console.log("listaEmpresasCadastradas")
-            console.log(listaEmpresasCadastradas[0].codigo_ativacao)
-          });
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-  }
+  //           console.log("listaEmpresasCadastradas")
+  //           console.log(listaEmpresasCadastradas[0].codigo_ativacao)
+  //         });
+  //       });
+  //     })
+  //     .catch(function (resposta) {
+  //       console.log(`#ERRO: ${resposta}`);
+  //     });
+  // }
 
   function sumirMensagem() {
     cardErro.style.display = "none";
