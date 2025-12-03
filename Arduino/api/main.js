@@ -12,6 +12,8 @@ const HABILITAR_OPERACAO_INSERIR = true;
 
 var s1 = 0;
 var s2 = 0;
+var s3 = 0;
+var s4 = 0;
 // função para comunicação serial
 const serial = async (
     valoresSensorTemperatura,
@@ -75,6 +77,18 @@ const serial = async (
                 [++s2, sensorTemperatura+8.00, sensorUmidade+8]
             );
             console.log(`Valores inseridos no banco: ${sensorTemperatura+8.00}, ${sensorUmidade+8}`);
+
+            await poolBancoDados.execute(
+                'INSERT INTO coleta (idColeta, fkSensor, temp, umidade, dtColeta, hrColeta) VALUES (?, 3, ?, ?, current_date(), current_time())',
+                [++s3, sensorTemperatura+3.40, sensorUmidade+3]
+            );
+            console.log(`Valores inseridos no banco: ${sensorTemperatura+3.78}, ${sensorUmidade+3}`);
+
+            await poolBancoDados.execute(
+                'INSERT INTO coleta (idColeta, fkSensor, temp, umidade, dtColeta, hrColeta) VALUES (?, 4, ?, ?, current_date(), current_time())',
+                [++s4, sensorTemperatura-3.57, sensorUmidade-3]
+            );
+            console.log(`Valores inseridos no banco: ${sensorTemperatura+3.57}, ${sensorUmidade-3}`);
         }
     });
 
