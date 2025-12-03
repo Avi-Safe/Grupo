@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Suporte</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/icon/logogalinha.png">
+</head>
+<body>
+    <div class="pagina">
+        <div class="navbar">
+            <img src="assets/img/Logo-letraBranca.png" alt="">
+            <button onclick="jira()">JIRA</button>
+            <button onclick="bobia()">BobIA</button>
+            <button onclick="documentacao()">Documentação</button>
+            <a href="">SAIR</a>
+        </div>
+        <div class="carrossel">
+            <p>PÁGINA DE SUPORTE</p>
+            <div class="container">
+
+                <span class="seta esquerda" onclick="esquerda()">
+                    <img src="assets/img/setaEsquerda.png" alt="">
+                </span>
+
+                <div class="conteudo" id="conteudo">
+                    <div class="box" id="box">
+                        <img src="assets/img/fluxoIncidente.png" alt="">
+                    </div>
+                    <div class="box" id="box">
+                        <img src="assets/img/fluxoProblema.png" alt="">
+                    </div>
+                    <div class="box" id="box">
+                        <img src="assets/img/fluxoRequisicao.png" alt="">
+                    </div>
+                </div>
+
+                <span class="seta direita" onclick="direita()">
+                    <img src="assets/img/setaDireita.png" alt="">
+                </span>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+    function jira() {
+        window.location.href = "https://giovannadeoliveira208.atlassian.net/servicedesk/customer/portals";
+    }
+    
+    function documentacao() {
+        window.location.href = "Documentação - aviSafe.pdf";
+    }
+
+    var conteudo = document.getElementById("conteudo");
+    var fluxogramas = document.getElementById("box");
+    var tamanhoCarrossel = 3;
+
+    var indice = 0;
+
+    function atuali() {
+        conteudo.style.transform = `translate(${-indice * 890}px)`;
+    }
+
+    function esquerda() {
+        indice--;
+        if (indice < 0) {
+            indice = tamanhoCarrossel - 1; // vai para o último
+        }
+        atuali();
+    }
+
+    function direita() {
+        indice++;
+        if (indice >= tamanhoCarrossel) {
+            indice = 0; // volta ao começo
+        }
+        atuali();
+    }
+
+</script>
