@@ -19,7 +19,7 @@
     <title>Dashboard</title>
 </head>
 
-<body>
+<body onload="inicializarDashboard()">
 
     <div class="container">
         <div class="menuLateral">
@@ -27,12 +27,12 @@
                 <img src="logoredux.png" alt="Logo AviSafe" class="logo">
             </div>
             <div class="mensagemBoasvindas">
-                Olá, ${nome}!
+                Olá, <span id="usuario"></span>!
                 <b>Bem-vindo(a) de volta</b>
             </div>
             <div class="nav">
                 <ul>
-                    <li><a href="#" class="ativo">Painel</a></li>               
+                    <li><a href="#" class="ativo">Painel</a></li>
                     <li><a href="../cadastro.html">Cadastro</a></li>
                     <li><a href="#">Suporte</a></li>
                     <li><a onclick="limparSessao()" id="logout-button" href="../login.html">Sair</a></li>
@@ -120,9 +120,9 @@
                     <h3>Horários com maior incidência de alertas</h3>
                     <h5>Últimos sete dias</h5>
                 </div>
-                <h3 id="horario1" class="textoVermelho">1°. 12:20</h3>
-                <h5 id="horario2">2°. 12:50</h5>
-                <h5 id="horario3">3°. 13:50</h5>
+                <h3 id="horario1" class="textoVermelho"></h3>
+                <h5 id="horario2"></h5>
+                <h5 id="horario3"></h5>
             </div>
             <div class="cardIndividual" id="num">
                 <div id="numTitulo">
@@ -152,144 +152,8 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 
+    <script src="dashboard.js"></script>
 </body>
-
 </html>
-<script>
-
-    function limparSessao() {
-        sessionStorage.clear();
-        setInterval(() => {
-            window.location = "../login.html";
-        }, 2000);
-    }
-
-    function popularVisaoGeral() {
-        var html = ''
-        for (var i = 1; i <= 8; i++) {
-            var nome = 'Galpão ' + i
-            var link = 'galpao' + i;
-
-            if (i == 2) {
-                html +=
-                    `
-                    <div class="alerta vermelho" style="">
-                        <a style="text-decoration: none; color: white;" href="${link}.html">
-                            <h3>${nome}</h3>
-                        </a>
-                    </div>
-                `
-            }
-            else {
-                html +=
-                    `
-                    <div class="alerta verde" style="">
-                        <a style="text-decoration: none; color: white;" href="${link}.html">
-                            <h3>${nome}</h3>
-                        </a>
-                      </div>
-            `
-            }
-        }
-
-        geral.innerHTML = html;
-    }
-
-    popularVisaoGeral()
-
-    const ctxSensor1 = document.getElementById('chart1').getContext('2d');
-    new Chart(ctxSensor1, {
-        data: {
-            labels: ['Galpão 1', 'Galpão 2', 'Galpão 3', 'Galpão 4', 'Galpão 5', 'Galpão 6', 'Galpão 7', 'Galpão 8'],
-            datasets:
-                [
-                    {
-                        type: 'bar',
-                        label: 'Umidade',
-                        yAxisID: 'y1',
-                        data: [53, 49, 70, 30, 40, 60, 70, 90, 50, 40],
-                        borderColor: '#6300CC',
-                        backgroundColor: '#00CCC9',
-                    },
-                    {
-                        type: 'bar',
-                        label: 'Temperatura',
-                        yAxisID: 'y',
-                        data: [21, 27, 20, 20, 21, 18, 30, 21, 22, 17],
-                        borderColor: '#000000',
-                        backgroundColor: '#CC0003',
-                    }
-
-                ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: true
-                }
-            },
-            scales: {
-                y: {
-                    position: 'right',
-                    title: { display: true, text: 'Temperatura (°C)' },
-                    min: 15,
-                    max: 35,
-                    grid: {
-                        color: 'rgba(200,200,200,0.5)',
-                        borderColor: 'black',
-
-                    },
-                    ticks: {
-                        font: { weight: 'bold' },
-                        color: (context) => {
-                            if (context.tick.value === 20) return 'red';
-                            return '#000000';
-                        },
-                    }
-                },
-                y1: {
-                    position: 'left',
-                    title: { display: true, text: 'Umidade (%)' },
-                    min: 20,
-                    max: 100,
-                    grid: { drawOnChartArea: false },
-                    ticks: {
-                        font: { weight: 'bold' },
-                        color: (context) => {
-                            if (context.tick.value === 60) return 'red';
-                            return '#000000';
-                        },
-                    }
-                },
-                x: {
-                    grid: {
-                        color: 'rgba(200,200,200,0.0)'
-                    }
-                }
-            },
-        }
-    });
-
-    const ctxSensor2 = document.getElementById('chart2').getContext('2d');
-    new Chart(ctxSensor2, {
-        type: 'line',
-        data: {
-            labels: ['12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00', '13:10', '13:20', '13:30', '13:40', '13:50'],
-            datasets: [{
-                label: 'Temperatura',
-                data: [18, 15, 17, 25, 31, 29, 18, 20, 20, 21, 23, 15],
-            },
-            {
-                label: 'Umidade',
-                data: [50, 40, 70, 30, 40, 60, 70, 90, 50, 40, 30, 60],
-            }]
-        },
-        options: opcoesGrafico
-    });
-</script>
