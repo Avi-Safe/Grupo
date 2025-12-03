@@ -1,25 +1,18 @@
-function popularVisaoGeral() {
-    var html = '';
-    for (var i = 1; i <= 8; i++) {
-        var nome = 'Galpão ' + i
-        var link = 'galpao' + i;
-        if (i == 2) {
-            html +=`
-                <div class="alerta vermelho" style="">
-                    <a style="text-decoration: none; color: white;" href="${link}.html">
-                        <h3>${nome}</h3>
-                    </a>
-                </div>`;
-        } else {
-            html +=`
-                <div class="alerta verde" style="">
-                    <a style="text-decoration: none; color: white;" href="${link}.html">
-                        <h3>${nome}</h3>
-                    </a>
-                </div>`;
-        }
-    }
-    geral.innerHTML = html;
+function kpiGalpoes() {
+    var idEmpresa = sessionStorage.ID_EMPRESA;
+    fetch(`/kpiGalpoes/kpiGalpoes/${idEmpresa}`)
+        .then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(resposta);
+                    var html = "";
+                    for (var i = 0; i < resposta.length; i++) {
+                        html += resposta[i].alerta_html;
+                    }
+                    geral.innerHTML = html;
+                });
+            }
+        });
 }
 
 function kpiHorarioEspecifica() {
@@ -45,21 +38,7 @@ function kpiHorarioIncidencia() {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(resposta);
-                    
-                    // var h1 = [];
-                    // var h2 = [];
-                    // var h3 = [];
-                    // for (var i = 0; i < resposta.length; i++) {
-                    //     h1.push(resposta[i].hrColeta);
-                    // }
-                    
-                    // for (var i = 0; i < h2.length; i++) {
-                    //     h2.push(resposta[i].hrColeta);
-                    // }
-                    
-                    // for (var i = 0; i < h3.length; i++) {
-                    //     h3.push(resposta[i].hrColeta);
-                    // }
+
                     document.getElementById('horario1').innerHTML = (resposta[0].hrColeta);
                     document.getElementById('horario2').innerHTML = (resposta[1].hrColeta);
                     document.getElementById('horario3').innerHTML = (resposta[2].hrColeta);
@@ -68,24 +47,103 @@ function kpiHorarioIncidencia() {
         });
 }
 
+function kpiHistoricoAlerta() {
+    var idEmpresa = sessionStorage.ID_EMPRESA;
+    fetch(`/kpiHistoricoAlerta/kpiHistoricoAlerta/${idEmpresa}`)
+        .then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(resposta);
+
+                    var html = "";
+
+                    for (var i = resposta.length - 1; i >= 0; i--) {
+                        var alerta = resposta[i];
+
+                        if(alerta.temp > 22 && alerta.umidade > 60) {
+                            html +=
+                            `<div class="alertaNotif">
+                            <span class="textoVermelho">Alerta: Temperatura e Umidade acima!</span>
+                            ${alerta.hrColeta} - Sensor ${alerta.fkSensor}
+                            </div>`;
+                        } else if (alerta.temp > 22) {
+                            html +=
+                            `<div class="alertaNotif">
+                            <span class="textoVermelho">Alerta: Temperatura acima!</span>
+                            ${alerta.hrColeta} - Sensor ${alerta.fkSensor}
+                            </div>`;
+                        } else {
+                            html +=
+                            `<div class="alertaNotif">
+                            <span class="textoVermelho">Alerta: Umidade acima!</span>
+                            ${alerta.hrColeta} - Sensor ${alerta.fkSensor}
+                            </div>`;
+                        }
+                    }
+                    historicoAlertas.innerHTML = html;
+                });
+            }
+        });
+}
+
+function kpiIncidenciaSensor() {
+    var idEmpresa = sessionStorage.ID_EMPRESA;
+    fetch(`/kpiIncidenciaSensor/kpiIncidenciaSensor/${idEmpresa}`)
+        .then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(resposta);
+
+                    document.getElementById('sensorIncidencia1').innerHTML = `Sensor ${resposta[0].fkSensor}`;
+                    document.getElementById('sensorIncidencia2').innerHTML = `Sensor ${resposta[0].fkSensor}`;
+                    document.getElementById('medidaIncidencia1').innerHTML = resposta[0].alertasTemp;
+                    document.getElementById('medidaIncidencia2').innerHTML = resposta[0].alertasUmi;
+                });
+            }
+        });
+}
+
+function kpiIncidenciaGalpao() {
+    var idEmpresa = sessionStorage.ID_EMPRESA;
+    fetch(`/kpiIncidenciaGalpao/kpiIncidenciaGalpao/${idEmpresa}`)
+        .then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(resposta);
+
+                    document.getElementById('galpao1').innerHTML = `Galpão ${resposta[0].fkGalpao}`;
+                    document.getElementById('galpao2').innerHTML = `Galpão ${resposta[0].fkGalpao}`;
+
+                    document.getElementById('medida1').innerHTML = resposta[0].alertasTemp;
+                    document.getElementById('medida2').innerHTML = resposta[0].alertasUmi;
+                });
+            }
+        });
+}
+
 function coletaTemperatura() {
-    const ctxSensor1 = document.getElementById('chart1').getContext('2d');
+    const ctxSensor0 = document.getElementById('chart0');
     var idEmpresa = sessionStorage.ID_EMPRESA;
     fetch(`/coletaUmidade/coletaUmidade/${idEmpresa}`)
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(resposta);
-                   var galpao1Umi = Math.trunc(resposta[0].media_umi);
-                return fetch(`/coletaTemperatura/coletaTemperatura/${idEmpresa}`)
+                    var galpoes = [];
+                    for (var i = 0; i < resposta.length; i++) {
+                        galpoes.push(`Galpão ${i+1}`)
+                    }
+                    var galpao1Umi = Math.trunc(resposta[0].media_umi);
+
+                    return fetch(`/coletaTemperatura/coletaTemperatura/${idEmpresa}`)
                     .then(function (response) {
                         if (response.ok) {
                             response.json().then(function (resposta) {
                                 console.log(resposta);
                                 var galpao1 = Math.trunc(resposta[0].media_temp);
-                                new Chart(ctxSensor1, {
+                                new Chart(ctxSensor0, {
                                     data: {
-                                        labels: ['Galpão 1', 'Galpão 2', 'Galpão 3', 'Galpão 4', 'Galpão 5', 'Galpão 6', 'Galpão 7', 'Galpão 8'],
+                                        labels: galpoes,
                                         datasets:
                                             [
                                                 {
@@ -166,7 +224,7 @@ function coletaTemperatura() {
 function graficoTempInd() {
     var idEmpresa = sessionStorage.ID_EMPRESA;
     
-    var ctxSensor1 = document.getElementById('chart1').getContext('2d');
+    var ctxSensor1 = document.getElementById('chart1');
     fetch(`/graficoTempInd/graficoTempInd/${idEmpresa}`)
         .then(function (response) {
             if (response.ok) {
@@ -197,6 +255,10 @@ function graficoTempInd() {
                     //         horario.push(hora);
                     //     }
                     // }
+                    document.getElementById('sensorTemp4').innerHTML = resposta[0].temp + '° C';
+                    document.getElementById('sensorTemp3').innerHTML = resposta[1].temp + '° C';
+                    document.getElementById('sensorTemp2').innerHTML = resposta[2].temp + '° C';
+                    document.getElementById('sensorTemp1').innerHTML = resposta[3].temp + '° C';
 
                     new Chart(ctxSensor1, {
                         type: 'bar',
@@ -213,19 +275,19 @@ function graficoTempInd() {
                                 data: sensores[2],
                                 borderColor: '#69CC00',
                                 backgroundColor: '#69CC00',
+                            },
+                            {
+                                label: 'Sensor 3',
+                                data: sensores[3],
+                                borderColor: '#00CCC9',
+                                backgroundColor: '#00CCC9',
+                            },
+                            {
+                                label: 'Sensor 4',
+                                data: sensores[4],
+                                borderColor: '#6300CC',
+                                backgroundColor: '#6300CC',
                             }],
-                            // {
-                            //     label: 'Sensor 3',
-                            //     data: [21, 25, 25, 26, 21, 22, 22],
-                            //     borderColor: '#00CCC9',
-                            //     backgroundColor: '#00CCC9',
-                            // },
-                            // {
-                            //     label: 'Sensor 4',
-                            //     data: [23, 30, 30, 28, 21, 24, 23],
-                            //     borderColor: '#6300CC',
-                            //     backgroundColor: '#6300CC',
-                            // }]
                         },
                         options: {
                             responsive: true,
@@ -288,12 +350,30 @@ function graficoTempInd() {
 function graficoUmiInd() {
     var idEmpresa = sessionStorage.ID_EMPRESA;
     
-    var ctxSensor2 = document.getElementById('chart2').getContext('2d');
+    var ctxSensor2 = document.getElementById('chart2');
     fetch(`/graficoUmiInd/graficoUmiInd/${idEmpresa}`)
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(resposta);
+
+                    var sensores = {};
+                    for (var i = 0; i < resposta.length; i++) {
+                        var sensor = resposta[i].fkSensor;
+                        var umidade = Number(resposta[i].umidade);
+
+                        // se nao tem o array deste sensor, ele cria
+                        if (!sensores[sensor]) {
+                            sensores[sensor] = [];
+                        }
+
+                        sensores[sensor].push(umidade);
+                    }
+
+                    document.getElementById('sensorUmi4').innerHTML = resposta[0].umidade + '%';
+                    document.getElementById('sensorUmi3').innerHTML = resposta[1].umidade + '%';
+                    document.getElementById('sensorUmi2').innerHTML = resposta[2].umidade + '%';
+                    document.getElementById('sensorUmi1').innerHTML = resposta[3].umidade + '%';
 
                     new Chart(ctxSensor2, {
                         type: 'bar',
@@ -301,28 +381,28 @@ function graficoUmiInd() {
                             labels: ['12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
                             datasets: [{
                                 label: 'Sensor 1',
-                                data: [46, 49, 39, 46, 50, 55, 60],
+                                data: sensores[1],
                                 borderColor: '#CC0003',
                                 backgroundColor: '#CC0003',
                             },
                             {
                                 label: 'Sensor 2',
-                                data: [33, 28, 49, 46, 33, 47, 45],
+                                data: sensores[2],
                                 borderColor: '#69CC00',
                                 backgroundColor: '#69CC00',
+                            },
+                            {
+                                label: 'Sensor 3',
+                                data: sensores[3],
+                                borderColor: '#00CCC9',
+                                backgroundColor: '#00CCC9',
+                            },
+                            {
+                                label: 'Sensor 4',
+                                data: sensores[4],
+                                borderColor: '#6300CC',
+                                backgroundColor: '#6300CC',
                             }],
-                            // {
-                            //     label: 'Sensor 3',
-                            //     data: [39, 55, 55, 33, 39, 49,43],
-                            //     borderColor: '#00CCC9',
-                            //     backgroundColor: '#00CCC9',
-                            // },
-                            // {
-                            //     label: 'Sensor 4',
-                            //     data: [60, 30, 30, 28, 39, 50,55],
-                            //     borderColor: '#6300CC',
-                            //     backgroundColor: '#6300CC',
-                            // }]
                         },
                         options: {
                             responsive: true,
@@ -391,11 +471,13 @@ function limparSessao() {
 function inicializarDashboard() {
     document.getElementById('usuario').innerHTML = sessionStorage.NOME_USUARIO;
 
+    kpiGalpoes();
+    kpiIncidenciaGalpao();
+    kpiIncidenciaSensor();
+    kpiHistoricoAlerta();
     graficoUmiInd();
     graficoTempInd();
     kpiHorarioEspecifica();
-    popularVisaoGeral();
     coletaTemperatura();
-    // coletaUmidade();
     kpiHorarioIncidencia();
 }

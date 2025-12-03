@@ -139,13 +139,7 @@
                         <canvas id="chart2"></canvas>
                     </div>
                 </div>
-
-
-
             </div>
-
-
-
         </div>
         <div class="baixoDireita">
             <h5>Histórico de Alertas</h5>
@@ -185,12 +179,10 @@
             }
 
             html +=
-                `
-                <div class="alertaNotif">
+                `<div class="alertaNotif">
                     <span class="textoVermelho">Alerta: Temperatura acima!</span>
                     ${String(hora).padStart(2, '0')}:${String(min).padStart(2, '0')} - Sensor 3
-                </div>
-            `
+                </div>`;
         }
 
         historico.innerHTML = html;

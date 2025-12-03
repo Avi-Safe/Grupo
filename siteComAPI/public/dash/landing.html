@@ -27,7 +27,7 @@
                 <img src="logoredux.png" alt="Logo AviSafe" class="logo">
             </div>
             <div class="mensagemBoasvindas">
-                Olá, <span id="usuario"></span>!
+                Olá, <span id="usuario"></span>
                 <b>Bem-vindo(a) de volta</b>
             </div>
             <div class="nav">
@@ -39,79 +39,6 @@
                 </ul>
             </div>
         </div>
-        <!--
-            <div class="containerLanding">
-                <div class="containerResumo">
-                    <div class="titulo">
-                        <h1>Galpão 1</h1>
-                    </div>
-                    <div class="alertasResumo">
-                        <div class="alerta verde">
-                            <h1>Sensor 1</h1>
-                            <h3>Noroeste</h3>
-                            <h5>18°C | 55%UR</h5>
-                        </div>
-                        <div class="alerta verde">
-                            <h1>Sensor 2</h1>
-                            <h3>Nordeste</h3>
-                            <h5>18°C | 55%UR</h5>
-                        </div>
-                        <div class="alerta verde">
-                            <h1>Sensor 3</h1>
-                            <h3>Sudoeste</h3>
-                            <h5>18°C | 55%UR</h5>
-                        </div>
-                        <div class="alerta verde">
-                            <h1>Sensor 4</h1>
-                           <h3> Sudeste</h3>
-                           <h5>18°C | 55%UR</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="containerResumo">
-                    <div class="titulo">
-                        <h1>Galpão 2</h1>
-                    </div>
-                    <div class="alertasResumo">
-                        <div class="alerta vermelho">
-                            <h1>Sensor 1</h1>
-                            <h3>Noroeste</h3>
-                            <h5>35°C | 55%UR</h5>
-                        </div>
-                        <div class="alerta verde">
-                            <h1>Sensor 2</h1>
-                            <h3>Nordeste</h3>
-                            <h5>18°C | 55%UR</h5>
-                        </div>
-                        <div class="alerta laranja">
-                            <h1>Sensor 3</h1>
-                            <h3>Sudoeste</h3>
-                            <h5>25°C | 55%UR</h5>
-                        </div>
-                        <div class="alerta verde">
-                            <h1>Sensor 4</h1>
-                           <h3> Sudeste</h3>
-                           <h5>18°C | 55%UR</h5>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="containerGrafico">
-                    <h3>Média de coletas - Galpão 1</h3>
-                    <div class="canvasGrafico">
-                        <canvas id="chart1"></canvas>
-                    </div>
-                </div>
-                <div class="containerGrafico">
-                    <h3>Média de coletas - Galpão 2</h3>
-                    <div class="canvasGrafico">
-                        <canvas id="chart2"></canvas>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    -->
 
         <div class="cardIndividual kpisLand">
             <img src="legenda2.jpg" id="legenda">
@@ -130,10 +57,10 @@
                     <h5>Últimos sete dias</h5>
                 </div>
                 <h3 id="medida1" class="textoVermelho">2</h3>
-                <h5 id="sensor1">Galpão 2</h5>
+                <h5 id="galpao1"></h5>
                 <h5 id="tipo1">Umidade</h5>
                 <h3 id="medida2" class="textoVermelho">6</h3>
-                <h5 id="sensor2">Galpão 2</h5>
+                <h5 id="galpao2"></h5>
                 <h5 id="tipo2">Temperatura</h5>
             </div>
         </div>
@@ -142,7 +69,7 @@
             <div class="containerGraficoLanding" id="media">
                 <h1>Média de coletas por galpão</h1>
                 <div class="canvasGrafico graficoLanding">
-                    <canvas id="chart1"></canvas>
+                    <canvas id="chart0"></canvas>
                 </div>
             </div>
             <div class="containerGraficoLanding" id="containerGeral">

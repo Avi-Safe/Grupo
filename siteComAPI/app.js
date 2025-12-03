@@ -22,6 +22,10 @@ var kpiHorarioIncidenciaRouter = require("./src/routes/kpiHorarioIncidencia");
 var kpiHorarioEspecificaRouter = require("./src/routes/kpiHorarioEspecifica");
 var graficoTempIndRouter = require("./src/routes/graficoTempInd");
 var graficoUmiIndRouter = require("./src/routes/graficoUmiInd");
+var kpiHistoricoAlertaRouter = require("./src/routes/kpiHistoricoAlerta");
+var kpiIncidenciaSensorRouter = require("./src/routes/kpiIncidenciaSensor");
+var kpiIncidenciaGalpaoRouter = require("./src/routes/kpiIncidenciaGalpao");
+var kpiGalpoesRouter = require("./src/routes/kpiGalpoes");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -36,6 +40,10 @@ app.use("/kpiHorarioIncidencia", kpiHorarioIncidenciaRouter);
 app.use("/kpiHorarioEspecifica", kpiHorarioEspecificaRouter);
 app.use("/graficoTempInd", graficoTempIndRouter);
 app.use("/graficoUmiInd", graficoUmiIndRouter);
+app.use("/kpiHistoricoAlerta", kpiHistoricoAlertaRouter);
+app.use("/kpiIncidenciaSensor", kpiIncidenciaSensorRouter);
+app.use("/kpiIncidenciaGalpao", kpiIncidenciaGalpaoRouter);
+app.use("/kpiGalpoes", kpiGalpoesRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

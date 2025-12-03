@@ -47,19 +47,19 @@
                     <h3>Temperatura atual:</h3>
                     <div class="alertasIndividual">
                         <div class="alerta verde">
-                            <h1>22° C</h1>
+                            <h1 id="sensorTemp1"></h1>
                             <h3>Sensor A1</h3>
                         </div>
                         <div class="alerta verde">
-                            <h1>22° C</h1>
+                            <h1 id="sensorTemp2"></h1>
                             <h3>Sensor A2</h3>
                         </div>
                         <div class="alerta verde">
-                            <h1>19° C</h1>
+                            <h1 id="sensorTemp3"></h1>
                             <h3>Sensor A3</h3>
                         </div>
                         <div class="alerta verde">
-                            <h1>21° C</h1>
+                            <h1 id="sensorTemp4"></h1>
                             <h3>Sensor A4</h3>
                         </div>
                     </div>
@@ -68,19 +68,19 @@
                     <h3>Umidade atual:</h3>
                     <div class="alertasIndividual">
                         <div class="alerta verde">
-                            <h1>60%</h1>
+                            <h1 id="sensorUmi1"></h1>
                             <h3>Sensor A1</h3>
                         </div>
                         <div class="alerta verde">
-                            <h1>50%</h1>
+                            <h1 id="sensorUmi2"></h1>
                             <h3>Sensor A2</h3>
                         </div>
                         <div class="alerta verde">
-                            <h1>57%</h1>
+                            <h1 id="sensorUmi3"></h1>
                             <h3>Sensor A3</h3>
                         </div>
                         <div class="alerta verde">
-                            <h1>40%</h1>
+                            <h1 id="sensorUmi4"></h1>
                             <h3>Sensor A4</h3>
                         </div>
                     </div>
@@ -122,11 +122,12 @@
                         <h3>Sensores com maior número de alertas</h3>
                         <h5>Últimos sete dias</h5>
                     </div>
-                    <h3 id="medida1" class="textoVermelho">1</h3>
-                    <h5 id="sensor1">Sensor 3</h5>
+                    <h5 id="sensorIncidencia1"></h5>
+                    <h5 id="sensorIncidencia2"></h5>
+                    <h1 id="medidaIncidencia2" class="textoVermelho"></h1>
                     <h5 id="tipo1">Umidade</h5>
-                    <h3 id="medida2" class="textoVermelho">1</h3>
-                    <h5 id="sensor2">Sensor 3</h5>
+                    <h1 id="medidaIncidencia1" class="textoVermelho"></h1>
+                    
                     <h5 id="tipo2">Temperatura</h5>
                 </div>
                 <div class="containerGraficoBaixo" id="grafico2">
@@ -139,7 +140,7 @@
         </div>
         <div class="baixoDireita" id="baixoDireita">
             <h5>Histórico de Alertas</h5>
-            <div class="historicoAlertas">
+            <div class="historicoAlertas" id="historicoAlertas">
             </div>
         </div>
     </div>
@@ -157,5 +158,5 @@
         }, 2000);
     }
 
-    baixoDireita.style.display = 'none';
+    baixoDireita.style.display = 'flex';
 </script>

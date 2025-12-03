@@ -428,7 +428,9 @@ h5 { margin: 0; font-size: 1vw; }
     min-height: 100%;
     display: flex;
     flex-direction: column;
-    min-height: 0;
+    justify-content: center;
+    align-items: center;
+    min-height: 0; 
 }
 
 #geral{
@@ -438,7 +440,7 @@ h5 { margin: 0; font-size: 1vw; }
     margin: 2%;
     display: grid;
     gap: 1%;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(auto-fill,1fr);
     overflow-y: auto;
 }
 
