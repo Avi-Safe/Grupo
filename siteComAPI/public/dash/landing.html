@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/styleDashboard.css">
     <link rel="icon" href="logogalinha.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,7 @@
     <div class="container">
         <div class="menuLateral">
             <div class="containerLogo">
-                <img src="logoredux.png" alt="Logo AviSafe" class="logo">
+                <img src="./img/logoredux.png" alt="Logo AviSafe" class="logo">
             </div>
             <div class="mensagemBoasvindas">
                 Olá, <span id="usuario"></span>
@@ -41,7 +41,7 @@
         </div>
 
         <div class="cardIndividual kpisLand">
-            <img src="legenda2.jpg" id="legenda">
+            <img src="./img/legenda2.jpg" id="legenda">
             <div class="cardIndividual" id="rank">
                 <div id="ranktitulo">
                     <h3>Horários com maior incidência de alertas</h3>
@@ -69,7 +69,10 @@
             <div class="containerGraficoLanding" id="media">
                 <h1>Média de coletas por galpão</h1>
                 <div class="canvasGrafico graficoLanding">
-                    <canvas id="chart0"></canvas>
+                    <canvas id="chartTemperatura"></canvas>
+                </div>
+                <div class="canvasGrafico graficoLanding">
+                    <canvas id="chartUmidade"></canvas>
                 </div>
             </div>
             <div class="containerGraficoLanding" id="containerGeral">

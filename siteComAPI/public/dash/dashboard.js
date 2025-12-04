@@ -1,3 +1,27 @@
+function pintarTemperatura(idCard, valor) {
+    var card = document.getElementById(idCard);
+
+    if (valor > 25 || valor < 15) {
+        card.style.backgroundColor = "#e01212";
+    } else if (valor > 22 || valor < 18) {
+        card.style.backgroundColor = "#f3b20f";
+    } else {
+        card.style.backgroundColor = "#19a519";
+    }
+}
+
+function pintarUmidade(idCard, valor) {
+    var card = document.getElementById(idCard);
+
+    if (valor > 65 || valor < 35) {
+        card.style.backgroundColor = "#e01212";
+    } else if (valor > 60 || valor < 40) {
+        card.style.backgroundColor = "#f3b20f";
+    } else {
+        card.style.backgroundColor = "#19a519";
+    }
+}
+
 function kpiGalpoes() {
     var idEmpresa = sessionStorage.ID_EMPRESA;
     fetch(`/kpiGalpoes/kpiGalpoes/${idEmpresa}`)
@@ -23,9 +47,9 @@ function kpiHorarioEspecifica() {
                 response.json().then(function (resposta) {
                     console.log(resposta);
 
-                    document.getElementById('horario1').innerHTML = (resposta[0].hrColeta);
-                    document.getElementById('horario2').innerHTML = (resposta[1].hrColeta);
-                    document.getElementById('horario3').innerHTML = (resposta[2].hrColeta);
+                    document.getElementById('horario1').innerHTML = resposta[0].hrColeta.slice(0, 5);
+                    document.getElementById('horario2').innerHTML = resposta[1].hrColeta.slice(0, 5);
+                    document.getElementById('horario3').innerHTML = resposta[2].hrColeta.slice(0, 5);
                 });
             }
         });
@@ -39,9 +63,9 @@ function kpiHorarioIncidencia() {
                 response.json().then(function (resposta) {
                     console.log(resposta);
 
-                    document.getElementById('horario1').innerHTML = (resposta[0].hrColeta);
-                    document.getElementById('horario2').innerHTML = (resposta[1].hrColeta);
-                    document.getElementById('horario3').innerHTML = (resposta[2].hrColeta);
+                    document.getElementById('horario1').innerHTML = resposta[0].hrColeta.slice(0, 5);
+                    document.getElementById('horario2').innerHTML = resposta[1].hrColeta.slice(0, 5);
+                    document.getElementById('horario3').innerHTML = resposta[2].hrColeta.slice(0, 5);
                 });
             }
         });
@@ -109,7 +133,7 @@ function kpiIncidenciaGalpao() {
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
-                    console.log(resposta);
+                    console.log("Incidencia galpão:", resposta);
 
                     document.getElementById('galpao1').innerHTML = `Galpão ${resposta[0].fkGalpao}`;
                     document.getElementById('galpao2').innerHTML = `Galpão ${resposta[0].fkGalpao}`;
@@ -122,103 +146,125 @@ function kpiIncidenciaGalpao() {
 }
 
 function coletaTemperatura() {
-    const ctxSensor0 = document.getElementById('chart0');
+    const ctxTemp = document.getElementById('chartTemperatura');
     var idEmpresa = sessionStorage.ID_EMPRESA;
+
+    fetch(`/coletaTemperatura/coletaTemperatura/${idEmpresa}`)
+        .then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log("Temperatura:", resposta);
+
+                    var galpoes = [];
+                    for (var i = 0; i < resposta.length; i++) {
+                        galpoes.push(`Galpão ${i + 1}`);
+                    }
+
+                    var galpao1Temp = Math.trunc(resposta[0].media_temp);
+
+                    new Chart(ctxTemp, {
+                        type: 'bar',
+                        data: {
+                            labels: galpoes,
+                            datasets: [{
+                                label: 'Temperatura (°C)',
+                                data: [galpao1Temp],
+                                borderColor: '#000000',
+                                backgroundColor: '#CC0003',
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { display: true }
+                            },
+                            scales: {
+                                y: {
+                                    min: 15,
+                                    max: 35,
+                                    title: { display: true, text: 'Temperatura (°C)' },
+                                    ticks: {
+                                        font: { weight: 'bold' },
+                                        color: (context) => {
+                                            if (context.tick.value === 20) return 'red';
+                                            return '#000000';
+                                        },
+                                    },
+                                    grid: {
+                                        color: 'rgba(200,200,200,0.5)',
+                                        borderColor: 'black',
+                                    }
+                                },
+                                x: {
+                                    grid: { color: 'rgba(200,200,200,0.0)' }
+                                }
+                            }
+                        }
+                    });
+
+                });
+            }
+        });
+}
+
+function coletaUmidade() {
+    const ctxUmi = document.getElementById('chartUmidade');
+    var idEmpresa = sessionStorage.ID_EMPRESA;
+
     fetch(`/coletaUmidade/coletaUmidade/${idEmpresa}`)
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
-                    console.log(resposta);
+                    console.log("Umidade:", resposta);
+
                     var galpoes = [];
                     for (var i = 0; i < resposta.length; i++) {
-                        galpoes.push(`Galpão ${i+1}`)
+                        galpoes.push(`Galpão ${i + 1}`);
                     }
+
                     var galpao1Umi = Math.trunc(resposta[0].media_umi);
 
-                    return fetch(`/coletaTemperatura/coletaTemperatura/${idEmpresa}`)
-                    .then(function (response) {
-                        if (response.ok) {
-                            response.json().then(function (resposta) {
-                                console.log(resposta);
-                                var galpao1 = Math.trunc(resposta[0].media_temp);
-                                new Chart(ctxSensor0, {
-                                    data: {
-                                        labels: galpoes,
-                                        datasets:
-                                            [
-                                                {
-                                                    type: 'bar',
-                                                    label: 'Umidade',
-                                                    yAxisID: 'y1',
-                                                    data: [galpao1Umi],
-                                                    borderColor: '#6300CC',
-                                                    backgroundColor: '#00CCC9',
-                                                },
-                                                {
-                                                    type: 'bar',
-                                                    label: 'Temperatura',
-                                                    yAxisID: 'y',
-                                                    data: [galpao1],
-                                                    borderColor: '#000000',
-                                                    backgroundColor: '#CC0003',
-                                                }
-                                            ]
-                                    },
-                                    options: {
-                                        responsive: true,
-                                        maintainAspectRatio: false,
-                                        plugins: {
-                                            legend: {
-                                                display: true
-                                            }
-                                        },
-                                        scales: {
-                                            y: {
-                                                position: 'right',
-                                                title: { display: true, text: 'Temperatura (°C)' },
-                                                min: 15,
-                                                max: 35,
-                                                grid: {
-                                                    color: 'rgba(200,200,200,0.5)',
-                                                    borderColor: 'black',
-                                                },
-                                                ticks: {
-                                                    font: { weight: 'bold' },
-                                                    color: (context) => {
-                                                        if (context.tick.value === 20) return 'red';
-                                                        return '#000000';
-                                                    },
-                                                }
-                                            },
-                                            y1: {
-                                                position: 'left',
-                                                title: { display: true, text: 'Umidade (%)' },
-                                                min: 20,
-                                                max: 100,
-                                                grid: { drawOnChartArea: false },
-                                                ticks: {
-                                                    font: { weight: 'bold' },
-                                                    color: (context) => {
-                                                        if (context.tick.value === 60) return 'red';
-                                                        return '#000000';
-                                                    },
-                                                }
-                                            },
-                                            x: {
-                                                grid: {
-                                                    color: 'rgba(200,200,200,0.0)'
-                                                }
-                                            }
+                    new Chart(ctxUmi, {
+                        type: 'bar',
+                        data: {
+                            labels: galpoes,
+                            datasets: [{
+                                label: 'Umidade (%)',
+                                data: [galpao1Umi],
+                                borderColor: '#6300CC',
+                                backgroundColor: '#00CCC9',
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: { display: true }
+                            },
+                            scales: {
+                                y: {
+                                    min: 20,
+                                    max: 100,
+                                    title: { display: true, text: 'Umidade (%)' },
+                                    ticks: {
+                                        font: { weight: 'bold' },
+                                        color: (context) => {
+                                            if (context.tick.value === 60) return 'red';
+                                            return '#000000';
                                         },
                                     }
-                                });
-                            })
+                                },
+                                x: {
+                                    grid: { color: 'rgba(200,200,200,0.0)' }
+                                }
+                            }
                         }
                     });
+
                 });
             }
         });
-    console.log("ID empresa:", sessionStorage.ID_EMPRESA);
 }
 
 function graficoTempInd() {
@@ -244,17 +290,11 @@ function graficoTempInd() {
                         sensores[sensor].push(temp);
                     }   
 
-                    // var horario = [];
-                    // for (var i = 0; i < resposta.length; i++) {
-                    //     var hora = resposta[i].hrColeta;
+                    pintarTemperatura("cardTemp1", Number(resposta[3].temp));
+                    pintarTemperatura("cardTemp2", Number(resposta[2].temp));
+                    pintarTemperatura("cardTemp3", Number(resposta[1].temp));
+                    pintarTemperatura("cardTemp4", Number(resposta[0].temp));
 
-                    //     var partes = hora.split(":");
-                    //     var minuto = Number(partes[1]);
-
-                    //     if (minuto % 2 == 0) {
-                    //         horario.push(hora);
-                    //     }
-                    // }
                     document.getElementById('sensorTemp4').innerHTML = resposta[0].temp + '° C';
                     document.getElementById('sensorTemp3').innerHTML = resposta[1].temp + '° C';
                     document.getElementById('sensorTemp2').innerHTML = resposta[2].temp + '° C';
@@ -370,6 +410,11 @@ function graficoUmiInd() {
                         sensores[sensor].push(umidade);
                     }
 
+                    pintarUmidade("cardUmi1", Number(resposta[3].umidade));
+                    pintarUmidade("cardUmi2", Number(resposta[2].umidade));
+                    pintarUmidade("cardUmi3", Number(resposta[1].umidade));
+                    pintarUmidade("cardUmi4", Number(resposta[0].umidade));
+
                     document.getElementById('sensorUmi4').innerHTML = resposta[0].umidade + '%';
                     document.getElementById('sensorUmi3').innerHTML = resposta[1].umidade + '%';
                     document.getElementById('sensorUmi2').innerHTML = resposta[2].umidade + '%';
@@ -479,5 +524,6 @@ function inicializarDashboard() {
     graficoTempInd();
     kpiHorarioEspecifica();
     coletaTemperatura();
+    coletaUmidade();
     kpiHorarioIncidencia();
 }

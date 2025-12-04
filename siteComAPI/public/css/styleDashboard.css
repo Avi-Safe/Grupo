@@ -274,7 +274,7 @@ h5 { margin: 0; font-size: 1vw; }
     min-height: 0;
     display: grid;
     grid-template-areas: 
-    "temp umi medidas alertas"
+    "medidas temp umi alertas"
     "rank grafico1 grafico1 alertas"
     "num grafico2 grafico2 alertas";
     gap: 2%;
