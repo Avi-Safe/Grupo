@@ -277,7 +277,7 @@ h5 { margin: 0; font-size: 1vw; }
     "medidas temp umi alertas"
     "rank grafico1 grafico1 alertas"
     "num grafico2 grafico2 alertas";
-    gap: 2%;
+    gap: 3%;
     margin: 2% 2% 2% 2%;
     border-radius: 0 3vh 3vh 0;
     background-color: #fff;
@@ -308,7 +308,7 @@ h5 { margin: 0; font-size: 1vw; }
     'horario1 horario1'
     'horario2 horario3';
     color: white;
-    padding: 5%;
+    padding: 2%;
 }
 
 #ranktitulo {
@@ -342,7 +342,7 @@ h5 { margin: 0; font-size: 1vw; }
     'medida1 medida2'
     'tipo1 tipo2';
     color: white;
-    padding: 5%;
+    padding: 3.5%;
     grid-area: num;
 }
 
@@ -395,7 +395,7 @@ h5 { margin: 0; font-size: 1vw; }
     flex-direction: column;
     max-height: 40%;
     max-width: 21%;
-    gap: 1%;
+    gap: 10%;
 }
 
 .conteudoLanding{
@@ -503,7 +503,7 @@ h5 { margin: 0; font-size: 1vw; }
     border: .2vh rgba(0, 0, 0, 0.173) solid;
     background-color: rgba(0, 0, 0, 0.173);
     flex: 1;
-    gap: 1%;
+    gap: 3%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }

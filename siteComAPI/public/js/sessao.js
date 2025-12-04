@@ -12,11 +12,6 @@ function validarSessao() {
     }
 }
 
-function limparSessao() {
-    sessionStorage.clear();
-    window.location = "../login.html";
-}
-
 // carregamento (loading)
 function aguardar() {
     var divAguardar = document.getElementById("div_aguardar");

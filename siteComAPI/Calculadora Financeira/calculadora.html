@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleCalculadora.css">
+    <link rel="icon" href="logogalinha.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_back" />
+    <title>Calculadora</title>
+</head>
+<body>
+    <div class="main" id="page">
+        <div class="navbar"><button onclick="gotoPage1()" class="atual"><span>1</span> Descobrir Taxa de Postura</button>
+        <button onclick="gotoPage2()"><span>2</span> Calculadora de Perdas</button>
+        <button onclick="gotoPage3()"><span>3</span> Informações Adicionais</button></div>
+        <div class="conteudo" id="conteudo">
+            <h1>Calculadora de taxa de postura</h1> 
+            Selecione o periodo da amostra 
+            <select name="" id="get_periodo">
+                <option value="1">Dia</option>
+                <option value="2">Mês</option>
+                <option value="3">Ano</option>
+            </select>
+            <div class="entrada">
+                Digite a quantidade de ovos coletados no periodo especificado <br>
+                <input type="number" id="get_ovos">
+                Digite o número de aves na sua produção <br>
+                <input type="number" id="get_ave">
+            </div>
+        
+            <button onclick="getPostura()">Calcular postura</button>
+            <div class="mes_container"><div id="mensagem"></div></div>
+
+            <a id="voltar" href="../Site Institucional/index.html">
+                <span id="seta" class="material-symbols-outlined">
+                    arrow_back
+                </span>
+                Voltar a página anterior
+            </a> 
+        </div>
+    </div>    
+
+
+</body>
+</html>
+
+<script>
+
+    function gotoPage1(){
+        page.innerHTML = `        
+        <div class="navbar"><button onclick="gotoPage1()" class="atual"><span>1</span> Descobrir Taxa de Postura</button>
+        <button onclick="gotoPage2()"><span>2</span> Calculadora de Perdas</button>
+        <button onclick="gotoPage3()"><span>3</span> Informações Adicionais</button></div>
+        <div class="conteudo" id="conteudo">
+            <h1>Calculadora de taxa de postura</h1> 
+            Selecione o periodo da amostra 
+            <select name="" id="get_periodo">
+                <option value="1">Dia</option>
+                <option value="2">Mês</option>
+                <option value="3">Ano</option>
+            </select>
+            <div class="entrada">
+                Digite a quantidade de ovos coletados no periodo especificado <br>
+                <input type="number" id="get_ovos">
+                Digite o número de aves na sua produção <br>
+                <input type="number" id="get_ave">
+            </div>
+        
+            <button onclick="getPostura()">Calcular postura</button>
+            <div class="mes_container"><div id="mensagem"></div></div>
+
+            <a id="voltar" href="../Site Institucional/index.html">
+                <span id="seta" class="material-symbols-outlined">
+                    arrow_back
+                </span>
+                Voltar a página anterior
+            </a> 
+        </div>`
+    }
+
+    function gotoPage2(){
+        page.innerHTML = `        
+        <div class="navbar"><button onclick="gotoPage1()"><span>1</span> Descobrir Taxa de Postura</button>
+        <button onclick="gotoPage2()" class="atual"><span>2</span> Calculadora de Perdas</button>
+        <button onclick="gotoPage3()"><span>3</span> Informações Adicionais</button></div>
+        <div class="conteudo" id="conteudo">
+            <h1>Calculadora de perdas por estresse climático</h1> 
+            </select>
+            <div class="entrada">
+                Digite a sua taxa de postura atual (%)<br>
+                <input type="number" id="get_post">
+                Digite o número de aves na sua produção <br>
+                <input type="number" id="get_ave">
+                Digite o preço médio da unidade do ovo <br>
+                <input type="number" id="get_preco">
+            </div>
+            <button onclick="getPerda()">Calcular perda</button>
+            <div class="mes_container"><div id="mensagem"></div></div>
+
+            <a id="voltar" href="../Site Institucional/index.html">
+                <span id="seta" class="material-symbols-outlined">
+                    arrow_back
+                </span>
+                Voltar a página anterior
+            </a> 
+        </div>`
+    }
+
+        function gotoPage3(){
+        page.innerHTML = `        
+        <div class="navbar"><button onclick="gotoPage1()" ><span>1</span> Descobrir Taxa de Postura</button>
+        <button onclick="gotoPage2()"><span>2</span> Calculadora de Perdas</button>
+        <button onclick="gotoPage3()" class="atual"><span>3</span> Informações Adicionais</button></div>
+        <div class="conteudo" id="conteudo">
+        <h1>Dados de base para os cálculos</h1> 
+        <div class="data_container"><div id="mensagem"><span>Taxa de postura ideal em aves poedeiras brasileiras:</span> >90%. Adaptado para 93% para aproximações deste simulador.<br>
+        <br><span>Relação de taxa de postura com severidade de estresse climático:</span> <br>•Perdas de até 15% em postura em situações de estresse ameno. <br>•Perdas de até 36% em casos extremos.</div></div>
+        </div>
+
+        <a id="voltar" href="../Site Institucional/index.html">
+            <span id="seta" class="material-symbols-outlined">
+                arrow_back
+            </span>
+            Voltar a página anterior
+        </a> `
+    }
+
+    function getPostura() {
+        var ovos = Number(get_ovos.value);
+        var aves = Number(get_ave.value);
+        var tempo = get_periodo.value;
+
+        var periodos = ['dia', 'mês', 'ano'];
+
+        if (tempo == 1){
+
+            var resultado = ovos / aves / 1 ;
+            var resultadoIdeal = (aves * .93)
+
+        } else if (tempo == 2) {
+
+            var resultado = ovos / aves / 30 ;
+            var resultadoIdeal = (aves * .93) * 30
+
+        } else {
+
+            var resultado = ovos / aves / 365 ;
+            var resultadoIdeal = (aves * .93) * 365.25
+
+        }
+        
+        var diferenca = ((resultadoIdeal - ovos) / resultadoIdeal) * 100;
+
+        if (resultado < .93) {
+
+            mensagem.innerHTML = `Nas condições atuais, sua taxa de postura aproximada é de <span>${resultado.toLocaleString('pt-BR', {style: 'percent'})}</span>`;
+
+            mensagem.innerHTML += `<br><br> <span>Em condições térmicas ideais, sua produção pode atingir até ≈${resultadoIdeal.toFixed()} ovos por ${periodos[tempo - 1]} </span>; uma diferença de <span>${diferenca.toFixed(1)}%.</span>`;
+    
+        } else if (resultado < 1.01){
+
+            mensagem.innerHTML = `Suas galinhas estão produzindo em máxima eficiência.`
+
+        } else {
+
+            mensagem.innerHTML = `Entrada inválida: a produção inserida excede o limite fisiológico habitual das aves. `
+
+        }
+
+
+    }
+
+    function getPerda() {
+        var aves = Number(get_ave.value);
+        var taxa = Number(get_post.value)/100;
+        var preco = Number(get_preco.value);
+
+        var producao = aves * taxa * 365;
+        var lucroAtual = producao * preco;
+
+        var ideal = aves * .93 * 365;
+        var lucroIdeal = ideal * preco;
+
+        var dif = lucroIdeal - lucroAtual;
+
+        if (taxa < .93) {
+
+            if (taxa < .75) {
+                mensagem.innerHTML = `Sua taxa de postura atual é comparável à <span><b>situações extremas</b> de estresse climático.</span></br></br>`;
+            } else if (taxa < .90){
+                mensagem.innerHTML = `Sua taxa de postura atual é comparável à <span><b>situações amenas</b> de estresse climático.</span></br></br>`;
+            } else {
+                mensagem.innerHTML = `Sua taxa de postura atual é comparável à <span>situações ideais de controle de temperatura e umidade.</span></br></br>`;
+            }
+
+            
+            mensagem.innerHTML += `Potencial de retorno em cenário de controle ideal: ${lucroIdeal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}/ano <br><br>
+            <b><span>Diferença de ganhos devido ao descontrole de umidade e temperatura: ${dif.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span></b>`;
+            
+        } else mensagem.innerHTML = `Entrada inválida: a taxa inserida excede o limite fisiológico habitual das aves. `;
+
+    }
+</script>

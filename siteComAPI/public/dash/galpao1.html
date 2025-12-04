@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/styleDashboard.css">
-    <link rel="icon" href="logogalinha.png">
+    <link rel="icon" href="../assets/imgs/logogalinha.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,9 +31,9 @@
                 <b>Bem-vindo(a) de volta</b>
             </div>
             <div class="nav">
-                <ul>
+                <ul id="ul">
                     <li><a href="landing.html">Painel</a></li>               
-                    <li><a href="../Site de Cadastro/cadastro.html">Cadastro</a></li>
+                    <li><a href="../cadastro.html" id="cadastro">Cadastro</a></li>
                     <li><a href="#">Suporte</a></li>
                     <li><a onclick="limparSessao()" id="logout-button" href="../login.html">Sair</a></li>
                 </ul>
@@ -152,8 +152,9 @@
 <script>
 
     function limparSessao() {
-        sessionStorage.clear();
-        setTimeout(() => {
+        alert(`Você será redirecionado para a tela de login!`);
+        setInterval(() => {
+            sessionStorage.clear();
             window.location = "../login.html";
         }, 2000);
     }

@@ -88,19 +88,19 @@ function kpiHistoricoAlerta() {
                             html +=
                             `<div class="alertaNotif">
                             <span class="textoVermelho">Alerta: Temperatura e Umidade acima!</span>
-                            ${alerta.hrColeta} - Sensor ${alerta.fkSensor}
+                            ${alerta.hrColeta.slice(0, 5)} - Sensor ${alerta.fkSensor}
                             </div>`;
                         } else if (alerta.temp > 22) {
                             html +=
                             `<div class="alertaNotif">
                             <span class="textoVermelho">Alerta: Temperatura acima!</span>
-                            ${alerta.hrColeta} - Sensor ${alerta.fkSensor}
+                            ${alerta.hrColeta.slice(0, 5)} - Sensor ${alerta.fkSensor}
                             </div>`;
                         } else {
                             html +=
                             `<div class="alertaNotif">
                             <span class="textoVermelho">Alerta: Umidade acima!</span>
-                            ${alerta.hrColeta} - Sensor ${alerta.fkSensor}
+                            ${alerta.hrColeta.slice(0, 5)} - Sensor ${alerta.fkSensor}
                             </div>`;
                         }
                     }
@@ -146,7 +146,7 @@ function kpiIncidenciaGalpao() {
 }
 
 function coletaTemperatura() {
-    const ctxTemp = document.getElementById('chartTemperatura');
+    var ctxTemp = document.getElementById('chartTemperatura');
     var idEmpresa = sessionStorage.ID_EMPRESA;
 
     fetch(`/coletaTemperatura/coletaTemperatura/${idEmpresa}`)
@@ -205,11 +205,12 @@ function coletaTemperatura() {
 
                 });
             }
+            coletaTemperatura.update();
         });
 }
 
 function coletaUmidade() {
-    const ctxUmi = document.getElementById('chartUmidade');
+    var ctxUmi = document.getElementById('chartUmidade');
     var idEmpresa = sessionStorage.ID_EMPRESA;
 
     fetch(`/coletaUmidade/coletaUmidade/${idEmpresa}`)
@@ -261,12 +262,13 @@ function coletaUmidade() {
                             }
                         }
                     });
-
+                    coletaUmidade.update();
                 });
             }
         });
 }
 
+var graficoTemperatura = null;
 function graficoTempInd() {
     var idEmpresa = sessionStorage.ID_EMPRESA;
     
@@ -275,20 +277,23 @@ function graficoTempInd() {
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
-                    console.log(resposta);
+                    console.log("grafico individual", resposta);
 
                     var sensores = {};
+                    var horarios = [];
+
                     for (var i = 0; i < resposta.length; i++) {
                         var sensor = resposta[i].fkSensor;
                         var temp = Number(resposta[i].temp);
+                        var horario = resposta[i].hrColeta;
 
-                        // se nao tem o array deste sensor, ele cria
                         if (!sensores[sensor]) {
                             sensores[sensor] = [];
                         }
 
                         sensores[sensor].push(temp);
-                    }   
+                        horarios.push(horario.slice(0, 5));
+                    }
 
                     pintarTemperatura("cardTemp1", Number(resposta[3].temp));
                     pintarTemperatura("cardTemp2", Number(resposta[2].temp));
@@ -300,10 +305,31 @@ function graficoTempInd() {
                     document.getElementById('sensorTemp2').innerHTML = resposta[2].temp + '° C';
                     document.getElementById('sensorTemp1').innerHTML = resposta[3].temp + '° C';
 
-                    new Chart(ctxSensor1, {
+                    // se tem grafico, ele atualiza 
+                    if (graficoTemperatura != null) {
+
+                        // novos horários
+                        graficoTemperatura.data.labels = [
+                            horarios[3],
+                            horarios[2],
+                            horarios[1],
+                            horarios[0]
+                        ];
+
+                        // atualiza os datasets
+                        graficoTemperatura.data.datasets[0].data = sensores[1];
+                        graficoTemperatura.data.datasets[1].data = sensores[2];
+                        graficoTemperatura.data.datasets[2].data = sensores[3];
+                        graficoTemperatura.data.datasets[3].data = sensores[4];
+
+                        graficoTemperatura.update();
+                        return;
+                    }
+
+                    graficoTemperatura = new Chart(ctxSensor1, {
                         type: 'bar',
                         data: {
-                            labels: ['12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+                            labels: [horarios[3], horarios[2], horarios[1], horarios[0]],
                             datasets: [{
                                 label: 'Sensor 1',
                                 data: sensores[1], 
@@ -384,9 +410,11 @@ function graficoTempInd() {
                     });
                 });
             }
+            graficoTempInd.update();
         });
 }
 
+var graficoUmidade = null;
 function graficoUmiInd() {
     var idEmpresa = sessionStorage.ID_EMPRESA;
     
@@ -398,9 +426,12 @@ function graficoUmiInd() {
                     console.log(resposta);
 
                     var sensores = {};
+                    var horarios = [];
+
                     for (var i = 0; i < resposta.length; i++) {
                         var sensor = resposta[i].fkSensor;
                         var umidade = Number(resposta[i].umidade);
+                        var horario = resposta[i].hrColeta;
 
                         // se nao tem o array deste sensor, ele cria
                         if (!sensores[sensor]) {
@@ -408,6 +439,7 @@ function graficoUmiInd() {
                         }
 
                         sensores[sensor].push(umidade);
+                        horarios.push(horario);
                     }
 
                     pintarUmidade("cardUmi1", Number(resposta[3].umidade));
@@ -420,10 +452,31 @@ function graficoUmiInd() {
                     document.getElementById('sensorUmi2').innerHTML = resposta[2].umidade + '%';
                     document.getElementById('sensorUmi1').innerHTML = resposta[3].umidade + '%';
 
-                    new Chart(ctxSensor2, {
+                    // se tem grafico, ele atualiza 
+                    if (graficoUmidade != null) {
+
+                        // novos horários
+                        graficoUmidade.data.labels = [
+                            horarios[3],
+                            horarios[2],
+                            horarios[1],
+                            horarios[0]
+                        ];
+
+                        // atualiza os datasets
+                        graficoUmidade.data.datasets[0].data = sensores[1];
+                        graficoUmidade.data.datasets[1].data = sensores[2];
+                        graficoUmidade.data.datasets[2].data = sensores[3];
+                        graficoUmidade.data.datasets[3].data = sensores[4];
+
+                        graficoUmidade.update();
+                        return;
+                    }
+
+                    graficoUmidade = new Chart(ctxSensor2, {
                         type: 'bar',
                         data: {
-                            labels: ['12:00', '12:10', '12:20', '12:30', '12:40', '12:50', '13:00'],
+                            labels: [horarios[3], horarios[2], horarios[1], horarios[0]],
                             datasets: [{
                                 label: 'Sensor 1',
                                 data: sensores[1],
@@ -503,6 +556,7 @@ function graficoUmiInd() {
                     });
                 });
             }
+            graficoUmiInd.update();
         });
 }
 
@@ -515,6 +569,14 @@ function limparSessao() {
 
 function inicializarDashboard() {
     document.getElementById('usuario').innerHTML = sessionStorage.NOME_USUARIO;
+    var permissao = sessionStorage.PERMISSAO;
+
+    if (permissao != 1) {
+        cadastro.style.display = 'none';
+        ul.style.gap = '1%';
+    } else {
+        cadastro.style.display = 'flex';
+    }
 
     kpiGalpoes();
     kpiIncidenciaGalpao();
@@ -526,4 +588,16 @@ function inicializarDashboard() {
     coletaTemperatura();
     coletaUmidade();
     kpiHorarioIncidencia();
+
+    // atualiza o grafico a cada 30seg
+    setInterval(kpiHorarioEspecifica, 5000);
+    setInterval(kpiGalpoes, 5000);
+    setInterval(kpiIncidenciaGalpao, 5000);
+    setInterval(kpiIncidenciaSensor, 5000);
+    setInterval(kpiHistoricoAlerta, 5000);
+    setInterval(graficoTempInd, 5000);
+    setInterval(graficoUmiInd, 5000);
+    setInterval(coletaTemperatura, 5000);
+    setInterval(coletaUmidade, 5000);
+    setInterval(kpiHorarioIncidencia, 5000);
 }

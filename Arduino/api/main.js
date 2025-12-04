@@ -14,6 +14,8 @@ var s1 = 0;
 var s2 = 0;
 var s3 = 0;
 var s4 = 0;
+var ultimoRegistro = 0;
+var INTERVALO_COLETA = 5000;
 // função para comunicação serial
 const serial = async (
     valoresSensorTemperatura,
@@ -53,6 +55,13 @@ const serial = async (
 
     // processa os dados recebidos do Arduino
     arduino.pipe(new serialport.ReadlineParser({ delimiter: '\r\n' })).on('data', async (data) => {
+        var agora = Date.now();
+
+        if (agora - ultimoRegistro < INTERVALO_COLETA) {
+            return; 
+        }
+        ultimoRegistro = agora;
+
         console.log(data);
         const valores = data.split(';');
         const sensorUmidade = parseInt(valores[0]);
@@ -65,30 +74,29 @@ const serial = async (
         // insere os dados no banco de dados (se habilitado)
         if (HABILITAR_OPERACAO_INSERIR) {
             
-            // este insert irá inserir os dados na tabela "medida"
             await poolBancoDados.execute(
                 'INSERT INTO coleta (idColeta, fkSensor, temp, umidade, dtColeta, hrColeta) VALUES (?, 1, ?, ?, current_date(), current_time())',
                 [++s1, sensorTemperatura, sensorUmidade]
             );
-            console.log("Valores inseridos no banco: ", sensorTemperatura + ", " + sensorUmidade);
+            console.log("Valores do sensor1 inseridos no banco: ", sensorTemperatura + ", " + sensorUmidade);
 
             await poolBancoDados.execute(
                 'INSERT INTO coleta (idColeta, fkSensor, temp, umidade, dtColeta, hrColeta) VALUES (?, 2, ?, ?, current_date(), current_time())',
                 [++s2, sensorTemperatura+8.00, sensorUmidade+8]
             );
-            console.log(`Valores inseridos no banco: ${sensorTemperatura+8.00}, ${sensorUmidade+8}`);
+            console.log(`Valores do sensor2 inseridos no banco: ${sensorTemperatura+8.00}, ${sensorUmidade+8}`);
 
             await poolBancoDados.execute(
                 'INSERT INTO coleta (idColeta, fkSensor, temp, umidade, dtColeta, hrColeta) VALUES (?, 3, ?, ?, current_date(), current_time())',
                 [++s3, sensorTemperatura+3.40, sensorUmidade+3]
             );
-            console.log(`Valores inseridos no banco: ${sensorTemperatura+3.78}, ${sensorUmidade+3}`);
+            console.log(`Valores do sensor3 inseridos no banco: ${sensorTemperatura+3.78}, ${sensorUmidade+3}`);
 
             await poolBancoDados.execute(
                 'INSERT INTO coleta (idColeta, fkSensor, temp, umidade, dtColeta, hrColeta) VALUES (?, 4, ?, ?, current_date(), current_time())',
                 [++s4, sensorTemperatura-3.57, sensorUmidade-3]
             );
-            console.log(`Valores inseridos no banco: ${sensorTemperatura+3.57}, ${sensorUmidade-3}`);
+            console.log(`Valores do sensor4 inseridos no banco: ${sensorTemperatura+3.57}, ${sensorUmidade-3}`);
         }
     });
 
