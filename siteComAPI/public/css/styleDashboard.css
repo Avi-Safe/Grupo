@@ -81,7 +81,7 @@ li{
 }
 
 ul li a {
-    color: #fff;
+    color: #ecf0f1;
     text-decoration: none;
     font-weight: 500;
     font-size: 1vw;
@@ -92,7 +92,7 @@ ul li a {
 
 ul li a.ativo,
 ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .popupAlerta {
@@ -150,6 +150,11 @@ ul li a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.alerta h3 {
+    color: white;
+    font-size: 1vw;
 }
 
 .verde { background-color: #19a519; }
@@ -321,6 +326,7 @@ h5 { margin: 0; font-size: 1vw; }
 }
 
 #horario1 {
+    font-weight: 600;
     font-size: 5vh;
     grid-area: horario1;
 }
@@ -384,7 +390,7 @@ h5 { margin: 0; font-size: 1vw; }
     flex-direction: column;
     text-align: center;
     gap: 1%;
-    padding: 1% 1% 1% 1%;
+    padding: 1%;
     flex: 1;
 }
 
@@ -510,9 +516,11 @@ h5 { margin: 0; font-size: 1vw; }
 
 .containerGalpao h1 {
     font-size: 1.5vw;
+    font-weight: 700;
 }
 .containerGalpao h3 {
     font-size: 1vw;
+    font-weight: 500;
 }
 
 .esq{

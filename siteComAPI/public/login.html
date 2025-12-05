@@ -9,36 +9,36 @@
 </head>
 <body>
    <div class="pai">
-      <div class="esquerda">
-         <h1>Entre em sua conta</h1> 
+        <div class="esquerda">
+            <h1>Entre em sua conta</h1> 
 
-         <p>Insira suas credenciais para <br> entrar em sua conta</p> <br>
-         <span>Email:</span> <br>
-         <input type="text"  id="email_input" placeholder="Ex: avisafe@gmail.com"> <br>
+            <p>Insira suas credenciais para <br> entrar em sua conta</p> <br>
+            <span>Email:</span> <br>
+            <input type="text"  id="email_input" placeholder="Ex: avisafe@gmail.com"> <br>
 
-         <span>Senha:</span> <br>
-         
-         <img id="olhoSenha" src="./assets/imgs/olhoAberto.svg" onclick="mostrarSenha()">
-         <input type="password" id="senha_input"  placeholder="Insira sua senha" >
-         
-         <p id="caracteres">Deve ter mais de oito caracteres</p>
+            <span>Senha:</span> <br>
+            
+            <input type="password" id="senha_input" placeholder="Insira sua senha">
+            <img id="olhoSenha" src="./assets/imgs/olhoAberto.svg" onclick="mostrarSenha()">
 
-         <button class="botao" onclick="entrar()">Entrar</button>
-         
-         <a id="voltar" href="./index.html">
-            <img class="voltar" src="./assets/imgs/seta.png" >
-            <label>Voltar a página anterior</label>
-         </a> 
+            <p id="caracteres">Deve ter mais de oito caracteres</p>
 
-      </div>
-      <div class="direita">
-        <div class="alerta_erro">
-            <div class="card_erro" id="cardErro">
-                <span id="mensagem_erro"></span>
+            <button class="botao" onclick="entrar()">Entrar</button>
+            
+            <a id="voltar" href="./index.html">
+                <img class="voltar" src="./assets/imgs/seta.png" >
+                <label>Voltar a página anterior</label>
+            </a> 
+
+        </div>
+        <div class="direita">
+            <div class="alerta_erro">
+                <div class="card_erro" id="cardErro">
+                    <span id="mensagem_erro"></span>
+                </div>
             </div>
         </div>
-      </div>
-   </div>
+    </div>
 </body>
 </html>
 
@@ -98,7 +98,7 @@
 
             } else {
 
-                console.log("Houve um erro ao tentar realizar o login!");
+                console.log("Houve um erro ao tentar realizar o login!");   
 
                 resposta.text().then(texto => {
                     console.error(texto);
@@ -113,7 +113,7 @@
     }
 
     function sumirMensagem() {
-        cardErro.style.display = "none"
+        cardErro.style.display = "none";
     }
 
     function mostrarSenha() {
@@ -130,5 +130,4 @@
          olho.src = './assets/imgs/olhoAberto.svg'
       }
    }
-
 </script>
